@@ -1,1 +1,71 @@
 # JS-Learning-log
+<script>
+		//1.join()把数组转换为字符串,不会改变原数组
+		//参数是可选的，如果不写参数的话，默认用逗号隔开，如果写参数，以指定的参数隔开
+		var arr = [1,2,3];
+		console.log(arr.join());//"1,2,3";
+		console.log(arr);//[1,2,3];
+		console.log(arr.join("-"));"1-2-3"
+		
+		//2.reverse() 将数组逆序,会改变原数组
+		console.log(arr.reverse());//[3,2,1];
+		console.log(arr);
+		
+		//3.sort()排序  会改变原数组  按照ASCII码值进行排序
+		var arr2 = [102,20,5,33,101];
+		arr2.sort();
+		console.log(arr2);
+		
+		//sort() 从小到大排序
+		arr2.sort(function(a,b){
+			return a - b;
+		})
+		console.log(arr2);
+		
+		//sort() 从大到小排序
+		arr2.sort(function(a,b){
+			return b - a;
+		})
+		console.log(arr2);
+		
+//		arr2.sort(function(a,b){
+//			console.log(a,b);
+//		})
+		
+		//4.push() 向数组的末尾添加一个或多个元素
+		var fruits = ['apple','orange','banana'];
+		fruits.push('lemon');
+		console.log(fruits);
+		
+		//5.pop() 删除数组的最后一项,会修改原数组
+		fruits.pop();
+		fruits.pop();
+		fruits.pop();
+		console.log(fruits);
+		
+		//6.unshift() 在数组的第一项添加内容
+		fruits.unshift("123");
+		console.log(fruits);
+		
+		//7.shift() 删除数组的第一项
+		fruits.shift();
+		console.log(fruits);
+		
+		//8.splice(开始的下标，删除多少项，插入的内容) 在数组中添加或删除元素
+		var language = ["JS","PHP","C","Python"];
+		language.splice(1,2,"123");
+		console.log(language);
+		
+		
+//		function fn1(a,b){
+//			return a - b;
+//		}
+
+		/*
+		 	数组是一种复杂数据类型，其作用就是作为一个或多个数据的容器
+		 	属性：length
+		 	方法：
+		 		1.join()把数组转换为字符串
+		 	
+		*/
+	</script>
