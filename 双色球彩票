@@ -1,1 +1,102 @@
 # JS-Learning-log
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			button{
+				width: 100px;
+				height: 30px;
+				font-size: 15px;
+				text-align: center;
+				line-height: 30px;
+			}
+			ul{
+				list-style: none;
+				padding:10px;
+				margin: 0;
+				
+			}
+			li{
+				float: left;
+				width: 50px;
+				font-size: 20px;
+				height: 50px;
+				border-radius: 50%;
+				color: #fff;
+				background: red;
+				text-align: center;
+				line-height: 50px;
+				margin:10px
+			}
+			li:last-child{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<button>红色球</button>
+		<button>蓝色球</button>
+		<button>双色球</button>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementsByTagName("button");
+		var lis = document.getElementsByTagName("li");
+		var arr = new Array();
+		var arr1 = new Array();
+		
+		btn[2].onclick = function(){
+			for(var i = 0;i < 6;i++){
+				var num = parseInt(Math.random()*33+1);
+				if(arr1[num] !== undefined){
+					arr1[num] = '';
+				}else if(num < 10){
+					num = '0' + num;
+				}
+				arr[i] = num;
+			}
+			for(var i = 0;i < 6;i++){
+				lis[i].innerHTML = arr[i];
+			}
+			var num1 = parseInt(Math.random()*16+1)
+			if(num1 < 10){
+				num1 = '0' + num1;
+			}
+			lis[6].innerHTML = num1;
+		}
+		
+		btn[0].onclick = function(){
+			for(var i = 0;i < 6;i++){
+				var num = parseInt(Math.random()*33+1);
+				if(arr1[num] !== undefined){
+					arr1[num] = '';
+				}else if(num < 10){
+					num = '0' + num;
+				}
+				arr[i] = num;
+			}
+			for(var i = 0;i < 6;i++){
+				lis[i].innerHTML = arr[i];
+			}
+		}
+		
+		btn[1].onclick = function(){
+			var num1 = parseInt(Math.random()*16+1)
+			if(num1 < 10){
+				num1 = '0' + num1;
+			}
+			lis[6].innerHTML = num1;
+		}
+		
+	</script>
+</html>
