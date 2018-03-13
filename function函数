@@ -88,6 +88,44 @@
 //		(function(){
 //			alert("匿名函数的自调用");
 //		})();
+
+function fn1(x){
+			console.log(x);
+		}
+		fn1(0);
+		
+		(function(num){
+			console.log("今天是星期"+num);
+		})(4)
+		
+		Math.max()
+		
+		//函数是自由，没有所属关系时，是函数
+		//当函数属于某个对象的时候，那么就叫对象下面的方法
+		//变量是自由的，没有所属关系的
+		//当变量属于某个对象时，就叫对象下面的属性
+		
+		
+		var length = 0;//变量
+		var obj = {};
+		obj.length = 5;//对象的属性
+		
+		function sayHello(){
+			alert("hello,nice to meet you")
+		}
+		sayHello()
+		
+		var person = {};
+		person.name = "test";//属性
+		person.sayHai = function(){//方法
+			alert("Hai")
+		}
+		person.sayHai();
+		
+		var Math1 = {};
+		Math1.maxTest = function(){
+			
+		}
 		
 	</script>
 </html>
