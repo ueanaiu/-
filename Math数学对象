@@ -56,5 +56,21 @@
 		//11.Math.abs()  求绝对值
 		var num9 = Math.abs(-5);
 		console.log(num9);
+		
+		Math.abs();//Math数学对象下面的取绝对值的方法
+		
+		var person = {};
+		person.sing = function(name){
+			alert(name);
+		}
+		person.test = add;
+		
+		person.sing("test");
+		
+		function add(x,y){
+			console.log(x + y);
+		}
+		
+		person.test(1,9);
 	</script>
 </html>
