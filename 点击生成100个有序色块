@@ -1,1 +1,82 @@
 # JS-Learning-log
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				margin:0;
+				padding:0;
+				list-style: none;
+				width:820px;
+				margin:0 auto;
+			}
+			li{
+				width:80px;
+				height: 80px;
+				float: left;
+				color:#000;
+				text-align: center;
+				line-height: 80px;
+				background: red;
+				border:1px #fff solid;
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">变</button>
+		<ul id="list"></ul>
+	</body>
+	<script>
+		//1.获取元素
+		var btn = document.getElementById('btn');
+		var list = document.getElementById('list');
+		var colors = ["red","green","blue","yellow"];
+		
+		btn.onclick = function(){
+			for(var i = 0; i < 100; i++){
+				list.innerHTML += '<li style="background:'+colors[i % colors.length]+'";>'+i+'</li>';
+			}
+		}
+		'<li style="background:"+red+">"+</li>'
+		
+		
+		
+//		btn.onclick = function(){
+//			var str = '';
+//			for(var i = 0; i < 100; i++){
+//				str += "<li>"+(i+1)+"</li>";
+//			}
+//			list.innerHTML = str;
+//			var li = 			document.getElementsByTagName('li');
+//		for(var i = 0; i < li.length;i++){
+//			if(i % 4 == 0){
+//				console.log(i);
+//				li[i].style.background = "red";
+//			}else if(i % 4 == 1){
+//				li[i].style.background = "green";
+//			}else if(i % 4 == 2){
+//				li[i].style.background = "blue";
+//			}else if(i % 4 == 3){
+//				li[i].style.background = "yellow";
+//			}
+//		}
+//		}
+		
+//		[red green blue yellow]
+//		0     1    2     3
+//		
+//		0   "red"
+//		1   "green"
+//		2   "blue"
+//		3   "yellow"
+//		4   "red"
+//		5   "green"
+//		6   "blue"
+//		7	"yellow"
+	
+		
+	</script>
+</html>
