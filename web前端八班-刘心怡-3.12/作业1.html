@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#wrap {
+				width: 320px;
+				height: 480px;
+				margin: 20px auto;
+				position: relative;
+			}
+			#imgs {
+				width: 100%;
+				height: 100%;
+				background: url(img/game_bg.jpg);
+			}
+			#box{
+				position: absolute;
+				top: 66px;
+				left: 63px;
+				width: 180px;
+				height: 16px;
+				border-radius: 8px;
+				overflow: hidden;
+			}
+			#progress {
+				height: 17px;
+				border-radius: 8px;
+			}
+			#gmenu {  
+				width: 320px;
+                height: 480px;
+                background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#start,.replay{
+				position: absolute;
+                left: 100px;
+                top: 200px;
+                width: 120px;
+                height: 50px;
+                border-radius: 10px;
+                text-align: center;
+                font-size: 25px;
+                color: #fff;
+                background: peru;
+                line-height: 50px;
+                cursor: pointer;
+			}
+			.replay{
+                position: absolute;
+                left: 100px;
+                top: 250px;
+                font-size: 0.8em;
+			}
+			
+			#overmenu {
+				position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 320px;
+                height: 480px;
+                background: rgba(0, 0, 0, 0.5);
+                text-align: center;
+                line-height: 410px;
+                font-size: 2em;
+                color: white;
+                display: none;
+			}
+			#scores {
+				position: absolute;
+				top: 0px;
+				left: 57px;
+				color: white;
+			}
+			#imgs img {
+				position: absolute;
+			}
+			#imgs img:nth-child(1) {
+				bottom: 220px;
+				left: 14px;
+			}
+			#imgs img:nth-child(2) {
+				left: 96px;
+				bottom: 265px;
+			}
+			#imgs img:nth-child(3) {
+				right: 28px;
+				bottom: 238px;
+			}
+			#imgs img:nth-child(4) {
+				left: 12px;
+				bottom: 159px;
+			}
+			#imgs img:nth-child(5) {
+				left: 101px;
+				bottom: 188px;
+			}
+			#imgs img:nth-child(6) {
+				right: 16px;
+				bottom: 168px;
+			}
+			#imgs img:nth-child(7) {
+				left: 28px;
+				bottom: 87px;
+			}
+			#imgs img:nth-child(8) {
+				left: 117px;
+				bottom: 107px;
+			}
+			#imgs img:nth-child(9) {
+				right: 9px;
+				bottom: 85px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="imgs">
+				<img src=""/> 
+				<img src=""/> 
+				<img src=""/> 
+				<img src=""/> 
+				<img src=""/>
+				<img src=""/> 
+				<img src=""/> 
+				<img src=""/> 
+				<img src=""/> 
+			</div>
+			<div id="box">
+				<img src="img/progress.png" id="progress" />
+			</div>
+			<div id="gmenu">
+				<p id="start">开始</p>
+			</div>
+			<div id="overmenu">
+				GAME OVER!!
+				<p class="replay">重新开始</p>
+			</div>
+			<p id="scores">0</p>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var start = document.getElementById('start');
+		var progress = document.getElementById('progress');
+		var imgs = document.getElementById('imgs');
+		var img = document.querySelectorAll('#imgs img');
+		var gmenu = document.getElementById('gmenu');
+		var replay = document.getElementsByClassName('replay')[0];
+		var overmenu = document.getElementById('overmenu');
+		var scores = document.getElementById('scores'); 
+		
+		var show,hide,hit;
+		var score = 0;
+		function randnum(m, n){
+			return Math.floor(Math.random() * (n - m + 1) + m) 
+		}
+		
+		start.onclick = function() {
+			gmenu.style.display = 'none';
+		var divw = 180;
+		var timer = setInterval(function() { 
+			divw--;
+			progress.style.width = divw + 'px';
+			if (divw == 0) {
+				clearInterval(timer);
+				overmenu.style.display = 'block';
+				
+				replay.onclick = function() {
+					overmenu.style.display = 'none';
+					gmenu.style.display = 'block'; 
+					scores.innerHTML = 0;
+				} 
+				clearInterval(time1); 
+			} 
+		}, 100) 
+		
+		var arr = ['h','h','h','x'];
+		var time1 = setInterval(function() {
+			clearInterval(show);
+			var num = randnum(0, 8);
+			var img1 = 0;
+			var img2 = 5;
+			var hx = arr[randnum(0, 3)];
+			show = setInterval(function() {
+				img[num].src = 'img/' + hx + img1 + '.png'; 
+				img1++; 
+				if (img1 == 5) {
+				clearInterval(show);
+				hide = setInterval(function(){
+				img2--; 
+				img[num].src = 'img/' + hx + img2 + '.png';
+				if (img2 == 0) {
+					clearInterval(hide); 
+					img[num].src = '';
+					} 
+				}, 100) 
+			} 
+		}, 100) 
+	
+			for (var i = 0;i <img.length;i++) { 
+				img[i].a = i; 
+				img[i].onclick = function () { 
+				var hitnum = 5;
+			if (this.a == num){ 
+				clearInterval(show); 
+				clearInterval(hide); 
+				this.src = '';
+				clearInterval(hit); 
+				hit = setInterval (function () {
+					hitnum++; 
+					img[num].src = 'img/' + hx + hitnum + '.png';
+					if (hitnum == 9) { 
+						clearInterval(hit); img[num].src = ''; 
+					} 
+				},100); 
+			} 
+			
+			if(hx == 'h'){ 
+				score += 10; 
+			}else{ 
+				score -= 10;
+			} 
+			scores.innerHTML = score; 
+				} 
+			} 
+		}, 1000) 
+	}
+	</script>
+
+</html>
