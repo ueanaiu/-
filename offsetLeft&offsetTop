@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>offsetLeft&&offsetTop</title>
+		<style>
+			body{
+				margin:0;
+			}
+			#box{
+				width:400px;
+				height: 200px;
+				border:1px #000 solid;
+				position: relative;
+			}
+			#div1{
+				width:200px;
+				height: 200px;
+				background: pink;
+				margin:0 auto;
+				overflow: hidden;
+				border:2px red solid;
+				/*position: relative;*/
+			}
+			#div2{
+				width:100px;
+				height: 100px;
+				background: green;
+				margin-left: 10px;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="div1">
+				<div id="div2"></div>
+			</div>
+		</div>
+	</body>
+	<script>
+		//offsetLeft和offsetTop可读属性
+		//offsetLeft 元素距离离自己最近的具有定位属性的父元素的左边距(当没有设置定位属性的父元素时，获取的是元素距离文档左边的边距)
+		//offsetTop 元素距离离自己最近的具有定位属性的父元素的上边距
+		var div2 = document.getElementById('div2');
+		console.log(div2.offsetLeft);
+		console.log(div2.offsetTop);
