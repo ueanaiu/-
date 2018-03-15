@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			.nav{
+				width:400px;
+				margin:50px auto 0px;
+				position: relative;
+			}
+			.nav ul{
+				list-style: none;
+			}
+			.nav ul li{
+				float: left;
+			}
+			.nav ul a{
+				display: block;
+				width:80px;
+				text-align: center;
+				text-decoration: none;
+				color:#000;
+			}
+			.nav .slider{
+				width:80px;
+				height: 2px;
+				background: red;
+				position: absolute;
+				top:22px;
+				left:0px;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li><a href="">导航1</a></li>
+				<li><a href="">导航2</a></li>
+				<li><a href="">导航3</a></li>
+				<li><a href="">导航4</a></li>
+				<li><a href="">导航5</a></li>
+			</ul>
+			<div class="slider"></div>
+		</div>
+	</body>
+	<script>
+		var slider = document.querySelector('.slider');
+		var navList = document.querySelectorAll('li');
+		var ul = document.querySelector('ul');
+		console.log(slider.offsetLeft);
+		var num = 0;
+		var isRange = true;
+		var timer2 = null;
+		
+		//切换到选中位置
+		function switchTo(index){
+			num = index;
+			var start = slider.offsetLeft;//起点
+			var end = index * 80;//终点
+			var change = end - start;
+			clearInterval(timer1);
+			var timer1 = setInterval(function(){
+				if(change > 0){
+					start += 5;
+					if(start >= end){
+						clearInterval(timer1);
+					}
+				}else if(change < 0){
+					start -= 5;
+					if(start <= end){
+						clearInterval(timer1);
+					}
+				}
+				slider.style.left = start + "px";
+			},20)
+			//左  5-3 change < 0
+			//start = 320  end = 160; change = -160;
+			//右  1-3 change > 0 
+			//start = 0  end = 160 change = 160
+		}
+	
+//		for(var i = 0; i < navList.length; i++){
+//			navList[i].index = i;
+//			navList[i].onmouseover = function(){
+//				switchTo(this.index);
+//			}
+//		}
+
+		//闭包的形式
+		for(var i = 0; i < navList.length; i++){
+			navList[i].onmouseover = (function(index){
+				return function(){
+					switchTo(index);
+				}
+			})(i)
+		}
+		
+		function autoPlay(){
+			timer2 = setInterval(function(){
+				if(isRange && num != navList.length - 1){
+					num++;//5
+				}else{
+					num--;
+				}
+				if(num == navList.length - 1){
+					isRange = false;
+				}
+				if(num == 0){
+					isRange = true;
+				}
+				switchTo(num);
+			},1000)
+		}
