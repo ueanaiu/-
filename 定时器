@@ -1,1 +1,43 @@
 # JS-Learning-log
+/*
+		 * 定时器
+		 * 1.循环定时器    setInterval();
+		 * 2.延迟定时器    setTimeout();
+		 * 
+		 * 参数1:可执行的代码语句（函数）
+		 * 参数2:时间(单位是毫秒)  1s == 1000ms
+		 * 
+		 * 清除定时器
+		 * clearInterval()
+		 * 接受一个参数，这个参数是你要清除的定时器的名字
+		 * 
+		 * 定时器不用的话一定要及时清除
+		 * 开定时器之前，一定要记得先把这个定时器清除一遍
+		 * 
+		 */
+		
+		//setTimeout()
+		//alert("hello world");
+		//setTimeout("alert('hello world')",5000)
+		function print(){
+			console.log(1);
+		}
+//		print()
+		//setTimeout(print,3000);
+		
+		
+		//循环定时器
+//		setInterval(print,1000);
+
+		var num = 10;
+		function time(){
+			num--;
+			if(num < 0){
+				//清除定时器
+				clearInterval(timer1);
+			}
+			console.log(num);
+			box.innerHTML = num;
+		}
+		var timer1 = setInterval(time,1000);
+		var timer2 = setInterval("console.log(1)",1000);
