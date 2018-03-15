@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:200px;
+				height: 200px;
+				border:2px red solid;
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var box = document.getElementById('box');
+		console.log(box.style.width);
+		//通过style的方式只能获取到元素的行间样式，通过style设置的样式也只能设置到行间
+		
+		//getComputedStyle(元素,null).attr 不支持IE6/7/8
+		console.log(getComputedStyle(box,null).width);
+		
+		//元素.currentStyle
+		console.log(box.currentStyle);
+//		console.log(box.currentStyle['borderColor']);
+		
+		//获取css样式的函数
+		function getCss(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj,null)[attr];
+			}
+		}
+//		console.log(getComputedStyle(box,null).borderLeftColor);
+		console.log(getCss(box,"borderLeftWidth"));
+		//注意：火狐浏览器getComputedStyle()这个方法不允许直接获取复合属性的属性值，必须是单一属性。例如：borderLeftWidth  backgroundColor...
+	
+		
+		
+		
+	</script>
+</html>

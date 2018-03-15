@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片预加载</title>
+		<style>
+			#loading{
+				width:500px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 24px;
+				background: pink;
+			}
+			#box{
+				width:500px;
+				border:1px #000 solid;
+				padding:10px;
+			}
+			#box img{
+				width:100%;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="loading">加载 0%</p>
+		<div id="box"></div>
+	</body>
+	<script>
+		//需要加载出来的图片地址
+		var imgArr = [
+			"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520914610898&di=2d2a5f05a6219831fda0462028105290&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9922720e0cf3d7ca7533225ef91fbe096a63a9d4.jpg",
+			"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915279447&di=fc74236d45903a3dc8f1e8590c086a54&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3Dea40d0169ecad1c8c4b6f46716460265%2Fdcc451da81cb39db6cf3a76fdb160924ab1830dc.jpg",
+			"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303364&di=63bfba9f37d30ad5c177a89ef97bfd37&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f437f36f4d10b912c9fc2ece.jpg",
+			"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303364&di=7f5284495915d227f6ef1232bc1662c7&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D5b1ac40baa8b87d6444fa35f6e704d54%2F58ee3d6d55fbb2fbab102e28444a20a44623dcd5.jpg",
+			"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303362&di=3e798772f7c5746221acf868ca21731e&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa1ec08fa513d2697be827d665efbb2fb4316d8bc.jpg"
+		];
+		//获取元素
+		var loading = document.getElementById('loading');
+		var imgBox = document.getElementById('box');
+		var index = 0;//用来记录当前图片加载的数量
+		var imgObjs = [];//存放图片对象
+		
+		//图片加载
+		function loadImg(){
+			//有多少个图片地址，应该对应生成多少个图片对象
+			for(var i = 0; i < imgArr.length; i++){
+				var img = new Image();
+				img.onload = function(){
+					index++;//每加载完成一张，数量+1
+					imgObjs.push(this);
+					loadProgress(index);//改变进度值
+				}
+				img.src = imgArr[i];
+			}
+		}
+		loadImg()
+		
+		//进度条
+		function loadProgress(index){
+			if(index == imgArr.length){//加载完成
+				loadingOver()
+			}
+			loading.innerHTML = index / imgArr.length * 100 + "%";
+		}
+		
+		//加载完成
+		function loadingOver(){
+			for(var i = 0; i < imgObjs.length; i++){
+				imgBox.appendChild(imgObjs[i]);
+			}
+		}
+		
+		
+		
+		
+		
+		
+		//1.一共需要加载多少张图片，图片的路径是已知的
+		//2.图片全部加载完成，所有图片插入到div中
+		//3.百分比      已经加载出来的图片的数量 /图片的总数量
+		//4.判断100%， div.appendChild();
+	</script>
+</html>

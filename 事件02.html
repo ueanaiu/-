@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var box = document.getElementById('box');
+//		box.onclick = function(){
+//			alert("hello world");
+//		}
+//		
+//		box.onclick = null;
+		
+//		box.onclick = function(){
+//			alert("你好");
+//		}
+		//通过on的形式多次给同一个元素绑定同一个事件，那么后面的事件处理函数会覆盖前面的
+
+		
+		//事件监听    addEventListener()
+		//addEventListener(事件名,事件处理函数,bool) 
+		//第三个参数，true：在捕获阶段执行，false：在冒泡阶段执行
+//		box.addEventListener('click',function(){
+//			alert("hello world");
+//		},false);
+//		box.addEventListener('click',function(){
+//			alert("你好");
+//		},false);
+		
+		/*
+		 * 通过addEventListener()给元素添加的事件处理函数，会按添加的顺序，依次执行。
+		*/
+		
+		//移除事件监听     removeEventListener(事件名，函数名，bool)
+//		box.removeEventListener('click',function(){
+//			alert("hello world");  错误写法，第二个参数必须是移除的函数名
+//		},false);
+
+		function fn1(){
+			alert("hello world");
+		}
+		function fn2(){
+			alert("你好");
+		}
+		
+		function fn3(){
+			alert('test');
+		}
+		
+//		box.onclick = fn3;
+		
+		box.addEventListener('click',fn1,false);
+		box.addEventListener('click',fn2,false);
+		
+		box.removeEventListener('click',fn1,false);
+
+		/*
+		 * 通过addEventListener()绑定的事件处理函数，只能通过removeEventListener()移除，并且移除时传递的参数必须和绑定时一致。
+		*/
+		
+		//为了最大限度了兼容各个浏览器，多数情况下我们会把事件处理函数放在冒泡阶段去执行，不是特别需要，不建议在捕获阶段执行。所以第三个参数，我们都用的是false。
+		
+		//事件流
+		//1.捕获阶段
+		//2.目标阶段：目标元素正在处理事件的阶段
+		//3.冒泡阶段
+		
+		
+	</script>
+</html>

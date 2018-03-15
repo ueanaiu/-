@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width:840px;
+				margin:0 auto;
+				border:1px red solid;
+				padding:10px;
+				overflow: hidden;
+			}
+			ul{
+				float: left;
+				width:200px;
+				margin:0 5px;
+				padding:0;
+				list-style: none;
+			}
+			li{
+				height:300px;
+				background: #ccc;
+				margin-bottom: 10px;
+				font-size: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+		</div>
+	</body>
+	<script>
+		
+		var li = document.getElementsByTagName('li');
+		var ul = document.getElementsByTagName('ul');
+		//随机函数
+		function rand(min,max){
+			return parseInt(Math.random()*(max - min + 1) + min);
+		}
+		
+		//1.生成li
+		function createLi(){
+			var arr = [];//用来保存ul的高度
+			var index = 0;//用来保存最小ul的下标
+			var oLi = document.createElement('li');
+			oLi.style.height = rand(100,300) +"px";
+			oLi.innerHTML = li.length;
+			for(var i = 0; i < ul.length; i++){
+				arr.push(ul[i].offsetHeight);
+			}
+			//console.log(arr);
+			index = minIndex(arr);
+			ul[index].appendChild(oLi);
+		}
+		
+		function minIndex(arr){
+			var minIndex = 0;//假设下标为0的这一项为数组中的最小值
+			var min = arr[minIndex];
+			for(var i = 1; i < arr.length; i++){
+				if(min > arr[i]){
+					min = arr[i];
+					minIndex = i;
+				}
+			}
+			return minIndex;
+		}
+		
+		for(var i = 0 ; i < 20; i++){
+			createLi()
+		}
+		
+		//滚动事件
+		window.onscroll = function(){
+			var sT = document.documentElement.scrollTop || document.body.scrollTop;
+			//页面滚动的最大距离 = 内容的总高度 - 可视区域的高度
+			var totalHeight = document.body.clientHeight;//页面总高度
+			var wH = document.documentElement.clientHeight;//可视区域高度 
+			var iH = totalHeight - wH;
+			//如果当前的滚动高度大于等于了最大的滚动距离，那么认为页面内容即将显示完毕
+			if(sT >= iH - 200){
+				//向结构中添加新的LI
+				for(var i = 0; i < 20; i++){
+					createLi();
+				}
+			}
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+//		createLi();
+//		createLi();
+//		createLi();
+		
+		
+		
+		
+		
+		
+		
+		//1.布局的方式
+		//2.LI应该插入那个UL里面
+		//3.如何找到高度最小的UL
+		//4.LI的高度是随机的
+		
+		
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:440px;
+				height: 100px;
+				padding: 50px 20px 0px 50px;
+				background: #ccc;
+				border:1px gray solid;
+				margin:200px auto;
+				font-size: 20px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			请输入用户名：<input type="text"  id="name"/>
+			<input type="button" value="登录" id="btn" />
+		</div>
+	</body>
+	<script>
+		var username = document.getElementById('name');
+		var btn = document.getElementById('btn');
+		var box = document.getElementById('box');
+		
+		//在登录之前先判断一下当前页面有没有cookie信息，如果有的话，跳过登录，直接弹出对应的用户名和欢迎信息；如果没有，那么提示用户登录
+		if(document.cookie){
+			alert("欢迎回来" + getCookie("username"));
+		}else{
+			box.style.display = "block";
+		}
+		
+		
+		
+		btn.onclick = function(){
+			if(username.value){
+				var date = new Date();
+				date.setDate(date.getDate() + 7);
+				document.cookie = "username =" + username.value + "; expires=" + date;
+				//console.log(document.cookie);
+				box.style.display = "none";
+			}else{
+				alert("请输入用户名");
+			}
+		}
+		
+		function getCookie(key){
+			var arr = document.cookie.split("; ");
+			for(var i = 0; i < arr.length; i++){
+				var arr2 = arr[i].split("=");
+				if(key == arr2[0]){
+					return arr2[1];
+				}
+			}
+		}
+	</script>
+</html>

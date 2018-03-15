@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:150px;
+				height: 150px;
+				background: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button"  value="btn" id="btn"/>
+		<div id="box"></div>
+	</body>
+	<script>
+		//1.点击按钮实现元素显示
+		//2.点击页面的任意位置实现元素隐藏
+		var btn = document.getElementById('btn');
+		var box = document.getElementById('box');
+		btn.onclick = function(event){
+			box.style.display = "block";
+			event.stopPropagation()
+//			event.cancelBubble = true;
+			
+		}
+		document.onclick = function(){
+			box.style.display = "none";
+		}
+		//阻止事件冒泡
+		//标准浏览器和IE9+对两种方法都是支持的,但是IE8-只支持第二种
+		//1. event.cancelBubble = true;
+		//2. event.stopPropagation();(ie8及以下)
+	</script>
+</html>

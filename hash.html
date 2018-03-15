@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:400px;
+				height: 200px;
+				border:1px red solid;
+				text-align: center;
+				line-height: 200px;
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>招聘岗位</h1>
+		<div id="box1">前端</div>
+		<div id="box2">后台</div>
+		<div id="box3">运维</div>
+	</body>
+	<script>
+		var div = document.getElementsByTagName('div');
+		if(location.hash){
+			if(location.hash.substring(1) == 0){
+				for(var i = 0; i < div.length; i++){
+					div[i].style.display = "none";
+				}
+				div[0].style.display = "block";
+			}else if(location.hash.substring(1) == 1){
+				for(var i = 0; i < div.length; i++){
+					div[i].style.display = "none";
+				}
+				div[1].style.display = "block";
+			}else if(location.hash.substring(1) == 2){
+				for(var i = 0; i < div.length; i++){
+					div[i].style.display = "none";
+				}
+				div[2].style.display = "block";
+			}
+			
+		}
+		
+		
+		
+		for (var i = 0 ; i < div.length; i++) {
+			div[i].index = i;
+			div[i].onmouseover = function(){
+				for(var i = 0; i < div.length; i++){
+					div[i].style.display = "none";
+				}
+				location.hash = this.index;
+				this.style.display = "block";
+			}
+		}
+	</script>
+</html>

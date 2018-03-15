@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新窗口运行代码</title>
+	</head>
+	<body>
+		<div></div>
+		<textarea  rows="20" cols="50" id="code"></textarea>
+		<input type="button" id="btn" value="点击运行"/>
+	</body>
+	<script>
+		var btn = document.getElementById('btn');
+		var code = document.getElementById('code');
+
+		btn.onclick = function(){
+			if(!code.value){
+				alert("请输入可执行的代码");
+				return
+			}
+			console.log(code.value);
+			var newW = window.open();
+			newW.document.write(code.value);
+		}
+	</script>
+</html>

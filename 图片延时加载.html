@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片延时加载（图片懒加载）</title>
+		<style>
+			div{
+				height: 800px;
+				width: 100%;
+				background: pink;
+			}
+			ul{
+				padding: 0;
+				margin:200px auto;
+				width:500px;
+				list-style: none;
+			}
+			ul li{
+				width:100%;
+				height: 300px;
+				margin-bottom: 300px;
+				border:1px #000 solid;
+			}
+			ul li img{
+				width:100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<ul>
+			<li ><img src="" alt="" _src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520914610898&di=2d2a5f05a6219831fda0462028105290&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9922720e0cf3d7ca7533225ef91fbe096a63a9d4.jpg"/></li>
+			<li id="li"><img src="" alt="" _src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915279447&di=fc74236d45903a3dc8f1e8590c086a54&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3Dea40d0169ecad1c8c4b6f46716460265%2Fdcc451da81cb39db6cf3a76fdb160924ab1830dc.jpg"/></li>
+			<li><img src="" alt="" _src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303364&di=63bfba9f37d30ad5c177a89ef97bfd37&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F9e3df8dcd100baa1f437f36f4d10b912c9fc2ece.jpg"/></li>
+			<li><img src="" alt="" _src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303364&di=7f5284495915d227f6ef1232bc1662c7&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D5b1ac40baa8b87d6444fa35f6e704d54%2F58ee3d6d55fbb2fbab102e28444a20a44623dcd5.jpg"/></li>
+			<li><img src="" alt="" _src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520915303362&di=3e798772f7c5746221acf868ca21731e&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa1ec08fa513d2697be827d665efbb2fb4316d8bc.jpg"/></li>
+		</ul>
+	</body>
+	<script>
+		
+		window.onscroll = function(){
+			var li = document.getElementsByTagName('li');
+			var iHeight = scrollY() + clientY();
+			for(var i = 0; i < li.length; i++){
+				var img = li[i].children[0];
+				if(li[i].offsetTop <= iHeight && img.getAttribute('_src')){
+					img.src = img.getAttribute('_src');
+					img.removeAttribute("_src");
+				}
+			}
+		}
+		
+		
+		
+		//获取页面的滚动高度
+		function scrollY(){
+			return document.documentElement.scrollTop || document.body.scrollTop
+		}
+		//获取窗口可视区域高度
+		function clientY(){
+			return document.documentElement.clientHeight || window.innerHeight;
+		}
+		document.onclick = function(){
+			window.close()
+		}
+		
+		//1.显示的图片是固定的，src地址是已知的
+		//2.拿一个自定义属性来保存图片地址
+		//3.当图片即将出现在可视区域范围之内时，给图片的src赋值
+		//4.获取和设置属性  
+	</script>
+</html>

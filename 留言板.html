@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width:500px;
+				margin: 0 auto;
+			}
+			.wrap .m_box{
+				padding:15px;
+				background: #f4f4f4;
+				border:1px #000 solid;
+				border-radius: 4px;
+			}
+			.m_box input,.m_box textarea{
+				width: 400px;
+				padding:10px 5px;
+				border-radius: 4px;
+				/*outline: none;*/
+				border:1px lightslategray solid;
+			}
+			.m_value,.btn{
+				margin-top: 10px;
+				overflow: hidden;
+			}
+			span{
+				vertical-align: top;
+			}
+			#btn{
+				width:80px;
+				height: 30px;
+				float: right;
+				text-align: center;
+				display: block;
+				padding:0;
+				line-height: 30px;
+			/*	line-height: 30px;*/
+			}
+			#msgList{
+				margin:30px 0px;
+				padding:0px;
+				list-style: none;
+			}
+			#msgList li{
+				margin-bottom: 15px;
+			}
+			#msgList li h4{
+				margin:0;
+				background: #ccc;
+				font-size: 16px;
+				padding: 5px 0px 5px 10px;
+			}
+			#msgList li p{
+				margin:0;
+				background: #f4f4f4;
+				padding:20px;
+			}
+			#msgList li p a{
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="m_box">
+				<div class="m_name">
+					<span>姓名：</span>
+					<input type="text" id="name"/>
+				</div>
+				<div class="m_value">
+					<span>内容：</span>
+					<textarea id="msg"></textarea>
+				</div>
+				<div class="btn">
+					<input type="button" id="btn" value="提交"/>
+				</div>
+			</div>
+			<h3>显示留言</h3>
+			<ul id="msgList">
+				<!--<li>
+					<h4>名字</h4>
+					<p>
+						随便写点什么
+						<a href="###">删除</a>
+					</p>
+				</li>-->
+			</ul>
+		</div>
+	</body>
+	<script>
+		function message(){
+			var name = document.getElementById('name');
+			var msg = document.getElementById('msg');
+			var btn = document.getElementById('btn');
+			var msgList = document.getElementById('msgList');
+			
+			//提交留言
+			btn.onclick = function(){
+				if(!name.value || !msg.value){
+					alert("请补充完整信息");
+					return
+				}
+				var li = document.createElement('li');
+				li.innerHTML = "<h4>"+name.value+"</h4>"+"<p>"+msg.value+"<a href='###'>删除</a></p>";
+				msgList.insertBefore(li,msgList.firstElementChild);
+				deleteMsg(li);
+			}
+			
+			//删除留言
+			function deleteMsg(item){
+				var removeBtn = item.querySelector('a');
+				removeBtn.onclick = function(){
+					msgList.removeChild(item);
+				}
+			}
+			
+			
+		}
+		message()
+	</script>
+</html>

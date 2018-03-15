@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>BOM (Brower Object Model)浏览器对象模型</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//窗口的位置
+		//1.window.screenLeft ----窗口距离屏幕的左边距【不支持火狐】
+		//2.window.screenTop---窗口距离屏幕的上边距【不支持火狐】
+		//注意没有right和bottom
+		/*
+			火狐浏览器下[谷歌和Safari也支持]
+			1.window.screenX
+			2.window.screenY
+		*/
+		console.log("左边距"+window.screenLeft,screenX,window.screenTop,window.screenY);
+		
+		//窗口大小
+		/*
+			浏览器可视区域的宽高---【不包括扩滚动条，工具栏,界面元素】
+			document.documentElement.clientWidth && document.documentElement.clientHeight
+			window.innerHeight && window.innerWidth
+			
+			window.outerWidth && window.outerHeight---【包括扩滚动条，工具栏,界面元素】
+		*/
+		console.log(window.outerWidth,window.outerHeight);
+		console.log(screen.width,screen.height);
+		
+		/*
+		 屏幕的宽高（显示器）
+			screen.width && screen.height
+		*/
+		
+	</script>
+</html>

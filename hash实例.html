@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			button{
+				width:80px;
+				height: 40px;
+			}
+			div{
+				width:400px;
+				height: 200px;
+				border:1px #000 solid;
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<div style="background: red;">1</div>
+	</body>
+	<script>
+		var arr = ["red","green","yellow"];
+		var btns = document.getElementsByTagName('button');
+		var div = document.getElementsByTagName('div')[0];
+		
+		if(location.hash){
+			console.log(location.hash);
+			if(location.hash.substring(1) == 0){
+				div.style.background = arr[0];
+			}else if(location.hash.substring(1) == 1){
+				div.style.background = arr[1];
+			}else if(location.hash.substring(1) == 2){
+				div.style.background = arr[2];
+			}
+		}
+		
+		for(var i = 0; i < btns.length; i++){
+			btns[i].index = i;
+			btns[i].onmouseover = function(){
+				location.hash = this.index;
+				div.style.background = arr[this.index];
+			}
+		}
+		
+		document.onclick = function(){
+//			history.back();
+			history.go(-1);
+		}
+	</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="打开新窗口" />
+	</body>
+	<script type="text/javascript">
+		var btn = document.getElementById("btn");
+		btn.onclick = function(){
+			window.open("图片延时加载.html","_blank","width = 500px,height = 400px,top = 500") ;
+		}
+		/*
+			window.open() ---【这三个参数都是可选填的】
+			参数1: 打开页面的地址
+			参数2: 定义打开方式
+			参数3: 打开窗口的宽高位置
+			宽高需要加像素，left和top不需要
+			
+			window.close()---【只能关闭由window.open打开的页面】
+		*/
+	</script>
+</html>

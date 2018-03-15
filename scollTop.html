@@ -1,0 +1,47 @@
+<!--<!DOCTYPE html>-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 	window.onscroll 页面发生滚动的时候触发的事件
+		 	
+		 	获取页面的滚动距离（高度）
+		 	docuemnt.body.scrollTop
+		 	document.documentElement.scrollTop
+		 	
+		*/
+		window.onscroll = function(){
+			console.log(document.body.scrollTop);
+		}
+//      window.onscroll = function(){
+//      	console.log(document.documentElement.scrollTop);
+//      }
+		
+		//获取页面滚动高度
+//		function sTop(){
+//			var sTop = document.body.scrollTop + document.documentElement.scrollTop;
+//			return sTop;
+//		}
+
+		/*
+		 * document.body.scollTop在没有头文档声明时，可以在标准浏览器下获取到页面滚动高度
+		 * 
+		 * <!DOCTYPE html>声明的前提下
+		 * document.documentElement.scrollTop在所有的浏览器下都可以获取到滚动高度
+		 * <!DOCTYPE html>没有声明的前提下
+		 * document.body.scollTop，IE10及以上版本浏览器，及其它浏览器都可以获取
+		*/
+		
+		
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//设置cookie
+		function setCookie(key,value,time){
+			var date = new Date();//获取当前时间
+			date.setDate(date.getDate()+time);//把cookie的有效期设置在传进来的天数之后
+			document.cookie = key+"="+value+"; expires="+date;
+		}
+		setCookie("age",20,7);
+		console.log(document.cookie);
+		
+		
+		//获取cookie
+		function getCookie(){
+			
+		}
+		getCookie()
+		
+		
+		//移除cookie
+		function removeCookie(key){
+			setCookie(key,"",-1);
+		console.log(document.cookie);
+		}
+		removeCookie("age");
+		console.log(document.cookie);
+	
+		//"name=zhansgan; age=18; sex=boy" ; 
+		//[name=zhansgan,age=18,sex=boy];  =
+		//[name,zhangsan],[age,18],[sex,boy]
+		getCookie(name);//zhangsan 
+	</script>
+</html>

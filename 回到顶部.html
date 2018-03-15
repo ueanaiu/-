@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+			div{
+				width:100px;
+				height: 100px;
+				background: #ccc;
+				text-align: center;
+				line-height: 100px;
+				position: fixed;
+				right:20px;
+				bottom: 20px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<p>这是顶部</p>
+		<!--<a href="#" id="btn">回到顶部</a>-->
+		<div id="topBtn">top</div>
+	</body>
+	<script>
+		//1.默认回到顶部的按钮是隐藏的
+		//2.当用户滚动滚动条时显示
+		//3.用户点击按钮，回到顶部
+		var timer = null;
+		var topBtn = document.getElementById('topBtn');
+		window.onscroll = function(){
+			var top = document.documentElement.scrollTop;
+			console.log(top);
+			if(top >= 100){
+				topBtn.style.display = "block";
+			}
+		}
+		topBtn.onclick = function(){
+			timer = setInterval(function(){
+				document.documentElement.scrollTop -= 30;
+				if(document.documentElement.scrollTop <= 0){
+					clearInterval(timer);
+				}
+			},30)
+			
+		}
+		
+	</script>
+</html>

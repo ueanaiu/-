@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//拿到数组中最小数的下标
+		function minIndex(arr){
+			var minIndex = 0;//假设下标为0的这一项为数组中的最小值
+			var min = arr[minIndex];
+			for(var i = 1; i < arr.length; i++){
+				if(min > arr[i]){
+					min = arr[i];
+					minIndex = i;
+				}
+			}
+			return minIndex;
+		}
+		console.log(minIndex([5,2,1,0]));
+		
+	</script>
+</html>

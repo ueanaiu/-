@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>本地存储</title>
+	</head>
+	<body>
+		<div>测试</div>
+	</body>
+	<script>
+		/*  本地存储    Storage  能存放内容5M左右    IE8+
+		 * 	       临时存储    sessionStorage
+		 * 	       永久存储     localStorage  将数据存储在计算机硬盘中
+		*/
+		
+		//console.log(localStorage);
+		//console.log(sessionStorage);
+		
+		//设置   setItem(key,value)
+//		localStorage.setItem("name","test");
+//		localStorage.setItem("age",19);
+//		localStorage.setItem("sex","boy");
+//		localStorage.setItem("hobby","code");
+//		localStorage.test = "测试";
+//		localStorage['class'] = "JS";
+//		console.log(localStorage);
+		
+		//访问    getItem(key)
+		//console.log(localStorage.getItem("name"));
+		
+		//移除  
+		//removeItem(key) 方式1
+//		localStorage.removeItem("name");
+//		console.log(localStorage);
+		
+		//delete localStorage.key  方式2
+//		delete localStorage.age
+//		console.log(localStorage);
+		
+		//localStorage.clear() 把存放在localStorage对象下的所有信息全部清空
+//		localStorage.clear();
+//		console.log(localStorage);
+		
+		
+		//sessionStorage 临时存储    将数据临时存放在浏览器本地 
+		//有效期持续到当前页面关闭
+		//临时存储跟永久存储的方法没有区别，区别在于有效期
+		
+//		sessionStorage.setItem("lang","en");
+		sessionStorage.num = 10;
+		sessionStorage['str'] = "hello world";
+		console.log(sessionStorage);
+		
+		console.log(sessionStorage.num);
+		console.log(sessionStorage.getItem('str'));
+		sessionStorage.removeItem('num');
+		console.log(sessionStorage);
+		
+		
+	</script>
+</html>

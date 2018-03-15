@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>history对象</title>
+	</head>
+	<body>
+		<button id="btn">打开新页面</button>
+	</body>
+	<script type="text/javascript">
+		/*
+		 * history 历史记录
+		 * 包含了用户在浏览器窗口中访问过的url地址。
+		 * history.back() 相当于浏览器窗口左上角的回退按钮
+		 * history.go(); 可以传递参数，如果传递的参数是正数，意味着前进，数字是几，就前进几个页面；如果传递的是负数，表示回退，数字是几，表示回退几个页面
+		 * history.forword() 相当于浏览器窗口左上角的前进按钮
+		 * 
+		*/
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			location.href = "index.html";
+		}
+		document.onclick = function(){
+			history.forward();
+		}
+//		document.onclick = function(){
+//			location.href = "hash实例.html";
+//		}
+		
+	</script>
+</html>

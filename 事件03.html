@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		//IE9以下浏览器不支持 addEventListener(),removeEventListener()
+		
+		//IE6/7/8下用   attachEvent() 添加   / detachEvent() 移除
+		attachEvent(事件名,函数)
+		detachEvent(事件名,函数)
+		
+		var box = document.getElementById('box');
+		box.attachEvent('onclick',fn1);
+		box.detachEvent("onclick",fn1);
+		
+		function fn1(){
+			alert(this.id);// this -> window
+		}
+		
+		/*
+		 * 在IE6/7/8下使用attachEvent(),事件处理函数中的this是执行window
+		 * attachEvent()同样可以给同一个元素绑定多个不同的事件处理函数，但是执行的顺序刚好是相反的，也就是说先绑定的后执行，后绑定的先执行。
+		 * 
+		*/
+		
+		
+		
+	</script>
+</html>

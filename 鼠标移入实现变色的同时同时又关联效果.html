@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				width:200px;
+				padding: 10px;
+				margin:100px auto;
+				list-style: none;
+			}
+			li{
+				text-align: center;
+				height: 50px;
+				line-height: 50px;
+				background: lightblue;
+			}
+			.one{
+				background: pink;
+			}
+			.focus{
+				background: yellow;
+			}
+			.side{
+				background: lightgray;
+			}
+			.item{
+				background: lightcoral;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="list">
+			<li class="one">这是首行</li>
+			<li>音乐</li>
+			<li>旅行</li>
+			<li>摄影</li>
+			<li>美食</li>
+			<li class="one">这是末行</li>
+		</ul>
+	</body>
+	<script>
+		var list = document.getElementById('list');
+		var lis = list.querySelectorAll('li');
+		//获取第一个和最后一个LI
+		var first = getFirst(list);
+		var last = getLast(list);
+		
+		for(var i = 0; i < lis.length; i++){
+			lis[i].onmouseover = function(){
+				var prev = getPrev(this);//获取鼠标移入的当前这个元素的上一个兄弟节点
+				var next = getNext(this);//获取鼠标移入的当前这个元素的下一个兄弟节点
+				//判断是不是第一个或者最后一个
+				if(this == first || this == last){
+					this.className = "item";
+				}else if(this == getNext(first) || this == getPrev(last)){//第二个或者倒数第二个
+					this.className = "focus";
+					if(this == getNext(first)){
+						getNext(this).className = "side";
+					}else{
+						getPrev(this).className = "side";
+					}
+				}else{
+					this.className = "focus";
+					prev.className = "side";
+					next.className = "side";
+				}
+			}
+		}
+		
+		for(var i = 0; i < lis.length; i++){
+			lis[i].onmouseout = function(){
+				var prev = getPrev(this);
+				var next = getNext(this);
+				if(this == first || this == last){
+					this.className = "one";
+					return
+				}
+				this.className = "";
+				if(this == getNext(first)){
+					next.className = "";
+					return
+				}else if(this == getPrev(last)){
+					prev.className = "";
+					return
+				}
+				if(this != getNext(first) || this != getPrev(this)){
+					prev.className = "";
+					next.className = "";
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		//获取下一个兄弟节点
+		function getNext(obj){
+			if(!obj || !obj.nextSibling){
+				return null
+			}
+			if(obj.nextSibling.nodeType == 1){
+				return obj.nextSibling
+			}else{
+				return getNext(obj.nextSibling);
+			}
+		}
+		
+		//获取上一个兄弟节点
+		function getPrev(obj){
+			if(!obj || !obj.previousSibling){
+				return null;
+			}
+			if(obj.previousSibling.nodeType == 1){
+				return obj.previousSibling;
+			}else{
+				return getPrev(obj.previousSibling)
+			}
+		}
+
+		
+		//获取第一个子节点
+		function getFirst(obj){
+			if(!obj || !obj.firstChild){
+				return null;
+			}
+			if(obj.firstChild.nodeType == 1){
+				return obj.firstChild;
+			}else{
+				return getNext(obj.firstChild);
+			}
+		}
+		
+		//获取最后一个子节点
+		function getLast(obj){
+			if(!obj || !obj.lastChild){
+				return null;
+			}
+			if(obj.lastChild.nodeType == 1){
+				return obj.lastChild;
+			}else{
+				return getPrev(obj.lastChild);
+			}
+		}
+	</script>
+</html>

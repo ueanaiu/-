@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="test" haha="heihei"></div>
+		<p id="page"></p>
+		<a href="index.html" id="link">其他页面</a>
+		<img src="1.jpg" alt="" id="pic"/>
+	</body>
+	<script>
+		var div = document.getElementsByTagName('div')[0];
+		var page = document.getElementById('page');
+		var link = document.getElementById('link');
+		var pic = document.getElementById('pic');
+		
+		//1.通过.属性名 的形式获取或设置元素的属性
+		//.属性名    获取和设置
+		console.log(div.id);//test
+		div.id = "box";
+		
+		//class的获取和设置
+		//通过.的形式给元素设置或者获取元素的class，必须要写全称className
+		page.className = "article";
+		page.className = "article news";
+		
+		//2.通过['属性名']的形式来设置或获取元素的属性
+		page['title'] = "2018";
+		console.log(page['className']);//article news
+		
+//		page['day'] = "weekend";
+//		page.day = "weekend";
+		//console.log(div.haha);
+//		console.log(div['haha']);	
+		/*
+		 	通过 .属性名 和 ['属性名']的形式只能设置和获取到元素的标准属性，无法设置和获取自定义属性。
+		*/
+		
+		//getAttribute('属性名');获取属性值
+		console.log(div.getAttribute('id'));
+		
+		//setAttribute('属性名','属性值');设置属性
+		div.setAttribute('name','section');
+		page.setAttribute('class',"test test1");
+		//通过setAttribute()给元素设置class的时候，属性名就写class就好了。
+		
+		//removeAttribute("属性名");
+//		page.removeAttribute('title');
+//		page.removeAttribute('id');
+		
+		console.log(div.getAttribute('haha'));
+		div.setAttribute('day',"weekend");
+		/*通过setAttribute()和getAttribute() 是可以设置和获取到自定义属性的*/
+		
+		//href , src ,url
+		console.log(link.href);
+		console.log(link['href']);
+		
+		console.log(pic.src);
+		console.log(pic['src']);
+		
+		console.log(pic.getAttribute('src'));
+		console.log(link.getAttribute('href'))
+		/*getAttribute() 可以获取到 src/href/url等的相对路径*/
+	</script>
+</html>

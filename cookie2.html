@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>设置cookie的有效期</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//设置cookie有效期
+		//cookie的有效期设置需要使用格林尼治时间
+		//expires 属性用来设置cookie的有效期，cookie的有效期和cookie信息之间需要用; （分号和空格）隔开
+		var date = new Date();
+		//setDate() 把时间设置到指定时间点
+		date.setDate(13);
+//		document.cookie = "name=hello; expires="+date;
+//		console.log(document.cookie);
+		
+//		document.cookie = "lang=en";
+//		console.log(document.cookie);
+		
+		document.cookie = "lang=en; expires="+date;
+		console.log(document.cookie);
+		
+		//没有专门用来移除cookie的方法，把需要移除的cookie信息的过期时间调整到过去的时间，cookie自动失效
+		
+		
+	</script>
+</html>

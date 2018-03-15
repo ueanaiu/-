@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--刷新当前页面，每两秒刷新一次，单位是S-->
+		<!--<meta http-equiv="refresh" content="2"/>-->
+		<!--5S之后跳转到百度-->
+		<meta http-equiv="refresh" content="5;url=http://www.baidu.com" />
+		<title>网页重定向</title>
+	</head>
+	<body>
+		<button>跳转到百度</button>
+		<<button>跳转到淘宝</button>
+		<button>跳转到新浪</button>
+		<button>重新加载页面</button>
+	</body>
+	<script type="text/javascript">
+		var btns = document.getElementsByTagName('button');
+		
+		//1.location.href 
+		btns[0].onclick = function(){
+			location.href = "http://www.baidu.com";
+		}
+		//2.location.assign(url)
+		btns[1].onclick = function(){
+			location.assign("http://www.taobao.com");
+		}
+		//3.location.replace(url);
+		btns[2].onclick = function(){
+			location.replace("http://www.sina.com");
+		}
+		
+		//4.location.reload() 重新加载页面
+		btns[3].onclick = function(){
+			location.reload();
+		}
+		/*
+		 * 	location.reload() 可以传递一个参数true，表示绕过缓存，从服务器重新加载。如果不写这个参数true的话，那么有可能会直接从缓存中加载
+		*/
+		
+//		setInterval(function(){
+//			location.reload();
+//		},1000)
+		
+		/*	
+		 	location.href和location.assign()
+		 	都会产生历史记录，可以回退到前一个页面的
+		 	
+		 	location.replace() 不会产生历史记录，不可以回退到前一个页面
+		*/
+	</script>
+</html>

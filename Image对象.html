@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Image对象</title>
+		<style>
+			#imgBox{
+				width:900px;
+				height: 500px;
+				border: 1px red solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="imgBox"></div>
+	</body>
+	<script>
+		//创建图片对象
+		//new Image(w,h)可以接受两个参数，第一个参数表示图片的宽度，第二个参数表示图片的高度
+		var imgBox = document.getElementById('imgBox');
+		var img  = new Image(300,200);
+		img.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520852965678&di=3d46e1880c2fdfcf6c89909958e56b34&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20141218%2Fsy_77521747364.jpg";
+
+		imgBox.appendChild(img);
+		
+		
+		//属性
+		//1.complete 返回浏览器是否已经完成对图像的加载
+		console.log(img.complete);
+		//2.hspace 设置或者返回图片左右两侧的留白
+		img.hspace = 100;
+		//3.vspace 设置或者返回图片上下两边的空白
+		img.vspace = 50;
+		
+		console.log(img.vspace,img.hspace);
+		
+		//事件句柄
+		//1.onload  当图像加载完毕（成功）时执行的事件
+		//2.onerror 在图像加载过程中出现错误时执行的事件
+		//3.onabort 当用户放弃加载时执行的事件
+		
+		window.onload = function(){
+			var body = document.getElementsByTagName('body')[0];
+			var img = new Image();
+			img.hspace = 100;
+			img.vspace = 100;
+			
+			body.appendChild(img);
+
+			img.onload = function(){
+				console.log("图片加载完成");
+			}
+			
+			img.onerror = function(){
+				console.log("图片加载失败");
+			}
+			img.onabort = function(){
+				console.log("朕放弃了！");
+			}
+			img.src = "images/3.png";
+			
+		}
+		/*
+		 * 	图片并不是把它添加到dom结构中才开始加载的，而是图片一旦赋值了src属性，就会开始加载。
+		 * 所以，为了避免图片已经加载完毕，但是onload事件还没有被触发的这种极端情况。我们一般把图片的src赋值放到img.onload事件之后
+		*/
+		
+		
+		
+		
+	</script>
+</html>
