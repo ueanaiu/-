@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 400px;
+				border:1px red solid;
+				margin:0 auto;
+			}
+			.top div{
+				float: left;
+				width:50%;
+				height: 50px;
+				line-height: 50px;
+				font-size: 24px;
+				text-align: center;
+			}
+			#show{
+				font-size: 200px;
+				text-align: center;
+			}
+			#rule{
+				font-size: 24px;
+				padding:10px;
+			}
+			#list{
+				padding:10px;
+				margin:0;
+				list-style: none;
+				overflow: hidden;
+			}
+			#list li{
+				float: left;
+				font-size: 50px;
+				margin-right:26px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="top">
+				<div id="time">剩余时间：20</div>
+				<div id="score">得分:0</div>
+			</div>
+			<div id="show">红</div>
+			<div id="rule">根据上面的字的颜色从下面选择正确的字，选择正确自动开始</div>
+			<ul id="list">
+				<li>红</li>
+				<li>黄</li>
+				<li>蓝</li>
+				<li>绿</li>
+				<li>黑</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		//选字游戏
+		function chooseWord(){
+			//1.获取元素
+			var time = document.getElementById('time');
+			var score = document.getElementById('score');
+			var show = document.getElementById('show');
+			var rule = document.getElementById('rule');
+			var lis = document.getElementsByTagName('li');
+			
+			var count = 20;//倒计时间
+			var num = 0;//得分
+			var timeBool = false;//游戏开始才会开始倒计时
+			var clickBool = true;//默认可以点击，游戏结束不能点击
+			
+			var colorArr = ["red","yellow","blue","green","black"];//颜色
+			var fontArr = ["红","黄","蓝","绿","黑"];//文字
+			
+			//游戏时间倒计时
+			var timer = setInterval(function(){
+				if(timeBool){
+					count--;
+					if(count <= 0){
+						clearInterval(timer);
+						clickBool = false;//游戏时间结束，不能再点击
+					}
+//					console.log(count);
+				}
+				time.innerHTML = "剩余时间："+count;
+			},1000)
+			
+			//生成随机数的函数
+			function rand(min,max){
+				return parseInt(Math.random()*(max - min +1) + min);
+			}
+			
+			//随机show的文字和颜色
+			function randShow(){
+				var colorIndex = rand(0,4);//随机颜色的下标
+				var fontIndex = rand(0,4);//随机文字下标
+				show.innerHTML = fontArr[fontIndex];
+				show.style.color = colorArr[colorIndex];
+			}
+			randShow()
+			
+			//随机数组去重
+			function randArr(){
+				var arr = [];//用来保存去重之后的数组
+				while(arr.length < 5){
+					var randNum = rand(0,4);//没循环一次生成一个新的随机数
+					if(arr.indexOf(randNum) == -1){
+						arr.push(randNum);
+					}
+				}
+//				console.log(arr);
+				return arr;
+			}
+			
+			//生成LI的文字和颜色
+			function randLi(){
+				var colors = randArr();//[0,3,2,1,4]
+				var fonts = randArr();//[4,2,3,0,1]
+				for(var i = 0; i < lis.length; i++){
+					lis[i].innerHTML = fontArr[fonts[i]];
+					lis[i].style.color = colorArr[colors[i]];
+				}
+			}
+			randLi()
+			
+		}
+		chooseWord()
+	</script>
+</html>
