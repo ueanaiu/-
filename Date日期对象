@@ -51,3 +51,12 @@
 		
 		setInterval(getTime,1000);
 		
+		//设置时间
+		//1.new Date(year,mon,date,h,m,s);
+		//注意：月份是0~11，所以我们传的数字是当前的月份+1
+		var date = new Date(2018,2,9,18,0,0);
+		console.log(date);
+		//2.new Date('Mar 9,2018,18:00:00')
+		var date = new Date('Mar 9,2018,18:00:00');
+		console.log(date);
+		
