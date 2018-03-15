@@ -1,1 +1,62 @@
 # JS-Learning-log
+//this代表的是一个指向
+		
+		//1.函数内部的this，指向谁？
+		//当函数是自由的，没有所属关系时，函数内部的this默认指向window
+		function fn1(){
+			console.log(this);//window
+		}
+		//fn1();
+		
+		//谁调用这个函数，this就指向谁
+		//btn.onclick = fn1; //btn
+		
+		//2.函数外面的this,指向window
+		//console.log(this);//window
+		
+		//3.定时器里的this始终指向window
+		//var btn = document.getElementById('btn');
+		/*btn.onclick = function(){
+			setInterval(function(){
+				console.log(this);
+			},1000)
+		}*/
+		//4.this更多的会用到对象的方法中
+		var person = {
+			name:"test",
+			age:18,
+			fn1:function(){
+				console.log(this);
+			},
+			introduce:function(){
+				alert("my name is " + this.name)
+			}
+		}
+		console.log(person.name,person.age);
+		person.fn1();
+		person.introduce();
+		
+		var num = 10;
+		function test(){
+			alert(this);
+		}
+		console.log(this);
+		
+		var window = {
+			onload:function(){
+				
+			},
+			setInterval:function(){
+				
+			},
+			setTimout:function(){
+				
+			}
+		}
+		var num = 10;
+		var fn1 = function(){
+			
+		}
+		
+		
+		
