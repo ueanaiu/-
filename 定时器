@@ -41,3 +41,32 @@
 		}
 		var timer1 = setInterval(time,1000);
 		var timer2 = setInterval("console.log(1)",1000);
+		
+		//定时器
+		//延迟定时器（单次定时器）   setTimeout()
+		//循环定时器    setInterval()
+		//清除循环定时器  clearInterval()
+		var btn = document.getElementById('btn');
+		var div = document.getElementById('div');
+//		btn.onclick = function(){
+//			div.style.marginLeft = "200px";
+//		}
+
+
+		//JS通过 style 的方式只能获取到行间样式
+
+		
+		
+		function timer(){
+			var timer1 = setInterval(go,50);
+			function go(){
+				var speed = 5;
+				div.style.marginLeft = parseInt(div.style.marginLeft) + speed + "px";
+				if(parseInt(div.style.marginLeft) >= 500){
+					clearInterval(timer1);
+				}
+			}
+		}
+		btn.onclick = timer;
+		
+		//只要函数名加括号就会使函数立即执行，如果我们希望定时器是在某一事件触发之后才执行的话，我们可以把这个定时器放到一个函数中，把这个函数赋值给这个元素的点击事件
