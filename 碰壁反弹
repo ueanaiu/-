@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:400px;
+				height: 200px;
+				border:1px #000 solid;
+				margin:100px auto;
+				position: relative;
+			}
+			#ball{
+				width:20px;
+				height: 20px;
+				background: lightgreen;
+				border-radius: 10px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="ball"></div>
+		</div>
+	</body>
+	<script>
+		//获取元素
+		var box = document.getElementById('box');
+		var ball = document.getElementById('ball');
+		//定义小球移动的速度
+		var speedX = 2;
+		var speedY = 2
+		//小球的可移动距离
+		//X轴    box.width - ball.width
+		var timer = setInterval(function(){
+			
+			if(parseInt(getComputedStyle(ball).left) >= 380 || parseInt(getComputedStyle(ball).left) < 0){
+				speedX = -speedX;
+				//speed = -2;
+			}
+			if(parseInt(getComputedStyle(ball).top) >= 180 || parseInt(getComputedStyle(ball).top) < 0){
+				speedY = -speedY;
+			}
+			ball.style.left = parseInt(getComputedStyle(ball).left) + speedX + "px";
+			ball.style.top = parseInt(getComputedStyle(ball).top) +speedY +"px";	
+		},20)
+//		0 2 4 6 8 .... 380
+//		380 378 376 374 ... 0
+//      380 + -2  378
+//      378 + -2 376
+		//0 -2  0 -2 0
+		
+	</script>
+</html>
+
