@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height: 300px;
+				border:2px red solid;
+				margin:0 auto;
+				overflow: scroll;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章这是一篇很长的文章</div>
+	</body>
+	<script>
+		//onload  事件
+		window.onload = function(){
+			
+		}
+		
+		//onscroll 事件
+		var box = document.getElementById('box');
+		box.onscroll = function(){
+			console.log("123");
+		}
+		
+		//onresize 事件  调整窗口大小时触发的事件
+		window.onresize = function(){
+			if(document.documentElement.clientWidth >= 500){
+				box.style.background = "pink";
+			}else{
+				box.style.background = "lightblue";
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标滚轮事件</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+		 * 鼠标滚轮事件
+				火狐浏览器     DOMMouseScroll
+				其他浏览器     mousewheel  
+				表示鼠标滚轮滚动的方向的属性
+				火狐：event.detail   负数：向上滚动;  正数：向下滚动
+				其他浏览器：event.wheelDelta  负数：向下滚动；正数：向上滚动
+				在火狐浏览器下给元素添加鼠标滚轮事件只能通过addEventListener()的形式添加
+		*/
+		var i = 0;
+		document.onmousewheel = function(event){
+			console.log(event);
+		}
+		
+//		document.onDOMMouseScroll = function(){
+//			alert("1");
+//		}
+		
+		document.addEventListener('DOMMouseScroll',fn1,false);
+		
+		function fn1(event){
+			console.log(event);
+		}
+		
+		//封装一个函数，解决火狐和其他浏览器的鼠标滚轮事件的兼容问题；并且判断当前用户是向那个方向滚动滚轮
+		
+		
+		//鼠标滚轮事件封装函数
+		function roll(obj){
+			obj.addEventListener('mousewheel',scroll,false);//其他浏览器
+			obj.addEventListener('DOMMouseScroll',scroll,false);//火狐浏览器
+			function scroll(event){
+				var event = event || window.event;
+				var isDown = true;//先假设用户是向下滚动滚轮的
+				if(event.wheelDelta){//其他浏览器
+					isDown = event.wheelDelta > 0 ? false : true;
+				}else{//火狐浏览器
+					isDown = event.detail > 0 ? true : false;
+				}
+				if(isDown){
+					alert("向下滚动")
+				}else{
+					alert("向上滚动")
+				}
+			}
+			
+		}
+		roll(document);
+		
+		function fn(){
+			alert("鼠标滚轮事件被触发");
+		}
+		
+		
+//		obj.onmousewheel = function(){
+//			
+//		}
+//		obj.addEventListener('DOMMouseScroll',)
+//		
+		
+	</script>
+</html>

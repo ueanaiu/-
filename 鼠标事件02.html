@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width:100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		//mousemove  鼠标移动时触发的事件
+		var box = document.getElementById('box');
+//		box.onmouseover = function(){
+//			console.log("mouseover事件");
+//		}
+//		var i = 0;
+//		box.onmousemove = function(){
+//			console.log(i++);
+//		}
+
+		document.onmousemove = function(event){
+			var event = event || window.event;
+			//console.log(event.clientX,event.clientY);
+			box.style.left = event.clientX - box.offsetWidth/2 + "px";
+			box.style.top = event.clientY - box.offsetHeight/2 +"px";
+		}
+
+	</script>
+</html>

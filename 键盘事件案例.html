@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				position: absolute;
+				left:0px;
+				top:0;
+				width: 150px;
+				height: 150px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var box = document.getElementById('box');
+		var maxWidth = document.documentElement.clientWidth - box.offsetWidth;
+//		console.log(maxWidth)
+		
+		document.onkeydown = function(event){
+			var event = event ||window.event;
+			switch(event.keyCode){
+				case 37://左
+					if(box.offsetLeft <= 0){
+						box.style.left = "0px";
+						return
+					}
+					box.style.left = box.offsetLeft - 2 + "px";
+				break;
+				case 38://上
+					if(box.offsetTop <= 0){
+						return
+					}
+					box.style.top = box.offsetTop - 2 + "px";
+				break;
+				case 39://右
+					if(box.offsetLeft >= maxWidth){
+						box.style.left = maxWidth +　'px'; 
+						return
+					}
+					box.style.left = box.offsetLeft + 10 + "px";
+				break;
+				case 40://下
+					box.style.top = box.offsetTop + 2 + "px";
+				break;
+			}
+		}
+	</script>
+</html>

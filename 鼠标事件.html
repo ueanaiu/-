@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+				width:2000px;
+			}
+		</style>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+		/*
+		 * 鼠标相对于浏览器窗口可视区域的坐标位置
+		 * 	event.clientX
+		 *  event.clientY
+		 * 
+		 * 鼠标相对于整个文档（页面）的坐标位置
+		 * event.pageX
+		 * event.pageY
+		 * 
+		 * 鼠标相对于电脑屏幕的坐标位置
+		 * event.screenX
+		 * event.screenY
+		 * 
+		*/
+		document.onclick = function(event){
+			var ev = event || window.event;
+			var clientX = ev.clientX;
+			var clientY = ev.clientY;
+			//console.log("clientX:" + clientX + ", clientY:" + clientY);
+			var pageX = ev.pageX;
+			var pageY = ev.pageY;
+			//console.log('pageX:' + pageX + ", pageY:" +pageY);
+			
+			var screenX = ev.screenX;
+			var screenY = ev.screenY;
+			console.log("screenX:" +screenX + ",screenY" +screenY);
+		}
+	</script>
+</html>

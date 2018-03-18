@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单事件</title>
+		<style>
+			input{
+				border:2px #ccc solid;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" id="form">
+			<input type="text" id="username"/>
+			<input type="text" id="password"/>
+			<input type="button" value="btn" id="btn"/>
+			<input type="submit" id="btn"/>
+		</form>
+	</body>
+	<script>
+		//聚焦  获得焦点      focus
+		var input = document.getElementsByTagName('input');
+		input[0].onfocus = function(){
+			this.style.background = "pink";
+		}
+		
+		//失去焦点    blur
+//		input[0].onblur = function(){
+//			this.style.background = "lightblue";
+//		}
+		
+		//change  当输入框内容放生改变(并且失去焦点)时触发的事件
+		input[0].onchange = function(){
+			console.log("change");
+			this.style.background = "yellow";
+		}
+		
+		//input 当用户输入内容时触发的事件
+		input[0].oninput = function(){
+			this.style.background = "purple";
+		}
+		
+		//submit  当表单默认提交时触发的事件
+		form.onsubmit = function(){
+			alert("表单提交");
+		}
+	</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>键盘事件</title>
+		<style>
+			div{
+				width:150px;
+				height: 150px;
+				color:#fff;
+				text-align: center;
+				line-height: 150px;
+				font-size: 24px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		//1.keydown
+		//2.keypress
+		//3.keyup
+		/*
+		 * keydown 和 keypress 都是键盘按键按下时触发的事件
+		 * 按键按住不释放，事件会连续触发
+		 * 区别：keydown事件支持所有的按键
+		 * 	   keypress事件不支持功能按键（ctrl,shift,上下左右等按键）
+		*/
+		/*
+		 * event.key  获取当前按下的按键
+		 * 
+		 * event.keyCode  获取按键所对应的键值
+		 * 
+		 * 左      37
+		 * 上      38
+		 * 右      39
+		 * 下      40
+		 *
+		*/
+		
+//		document.onkeydown = function(event){
+//			console.log(event.key,event.keyCode);
+//		}
+//
+//		document.onkeydown = function(event){
+//			console.log(event.keyCode,event.key);
+//		}
+//		document.onkeyup = function(){
+//			console.log("释放按键");
+//		}
+		var box = document.getElementById('box');
+		var i = 0;
+		document.onkeydown = function(){
+			console.log(1);
+			box.innerHTML = i++;
+		}
+	</script>
+</html>
