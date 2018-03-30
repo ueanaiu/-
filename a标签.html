@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			a标签   超链接
+			行标签
+			如果访问的是网络的链接的话，地址必须要有http://，
+			如果不写的话，无法实现正常的网页跳转
+			
+			target 属性定义跳转页面的打开方式
+				_blank  在新窗口打开
+				_self   在当前窗口打开   默认是self
+				_parent 在父框架集中打开
+				_top    在整个窗口中打开
+			
+			锚点   
+			当a标签充当锚点的作用时，需要通过href 属性来关联标记的位置
+			例如：<a href="#标记名"></a>
+				<div id="标记名"></div>
+			
+		-->
+		<!--<a href="http://www.baidu.com" target="_top">百度一下，你就知道</a>-->
+		<a href="#box1">零食</a>
+		<a href="#box2">服装</a>
+		<a href="#box3">家电</a>
+		<a href="#box4">百货</a>
+		<div id="box1" style="height: 500px;border:2px #000 solid">零食</div>
+		<div id="box2" style="height: 500px;border:2px #000 solid">服装</div>
+		<div id="box3" style="height: 500px;border:2px #000 solid">家电</div>
+		<div id="box4" style="height: 500px;border:2px #000 solid">百货</div>
+		
+	</body>
+</html>

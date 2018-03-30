@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#drag{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			#box{
+				width: 300px;
+				height: 300px;
+				border:1px solid;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="drag" draggable="true"></div>
+		<div id="box"></div>
+		
+	</body>
+	<script type="text/javascript">
+//	目标元素事件：目标元素为存放 拖动对象 的元素
+//			dragenter:进入目标元素触发，相当于 mouseenter 事件
+//			dragover:进入目标，离开目标之间，连续触发,相当于mouseover
+//			dragleave:离开目标元素触发，相当于mouseout
+//			drop:在目标元素上释放鼠标触发（也就是拖放完成的时候 ）
+
+		var oDrag=document.getElementById("drag");
+		var oBox=document.getElementById("box");
+		
+		oBox.ondragenter=function(){
+			oBox.innerHTML="进入目标"
+		};
+		oBox.ondragover=function(e){
+			var ev=e||event;
+			ev.preventDefault();
+			oBox.style.background="lightblue";
+			
+		};
+		oBox.ondragleave=function(){
+			oBox.innerHTML="离开目标"
+		};
+		oBox.ondrop=function(){ //要用释放事件 需要在dragover 里阻止默认事件
+			oBox.innerHTML="鼠标释放";
+			oBox.style.background="yellow";
+			this.appendChild(oDrag);
+		};
+		
+//	拖放事件执行顺序:
+//		1.没有ondrop时的顺序
+//		ondragstart ondrag ondragenter ondragover (ondragleave) ondragend
+//		2.有ondrop时的顺序
+//		ondragstart ondrag ondragenter ondragover ondrop ondragend
+	</script>
+</html>

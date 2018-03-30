@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#drag{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--img 图片自带拖放效果-->
+		<img src="a.png"/>
+		<!--draggable="true" 是用来设置可拖放的属性-->
+		<div id="drag" draggable="true"></div>
+	</body>
+	<script type="text/javascript">
+		var oDrag=document.getElementById("drag");
+		
+		oDrag.ondragstart=function(){
+			this.style.background="yellow";
+		};
+		oDrag.ondrag=function(){
+			this.innerHTML="拖拽进行中。。。"
+		};
+		oDrag.ondragend=function(){
+			this.style.background="lightblue";
+			this.innerHTML="拖拽结束"
+		}
+		
+//		拖放元素事件：事件对象为被拖拽元素（拖动的元素）
+//		dragstart:拖拽前触发    
+//		drag：拖拽前、拖拽结束之间，连续触发 
+//		dragend:拖拽结束触发
+	</script>
+</html>

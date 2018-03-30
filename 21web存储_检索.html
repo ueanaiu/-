@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		姓名：<input type="text" /> <br /><br />
+		电话：<input type="text" /> <br /><br />
+		备注：<input type="text" /> <br /><br />
+		<button>保存</button>
+		关键字搜索：<input type="text" /><br /><br />
+		<button>检索</button>
+		<br />
+		<!--存放检索出来的数据-->
+		<ul></ul>
+	</body>
+	<script type="text/javascript">
+		var oInp=document.getElementsByTagName("input");
+		var oBtn=document.getElementsByTagName("button");
+		var oUl=document.getElementsByTagName("ul")[0];
+		
+//		思路: 第一步 保存数据    第二部拿到数据     第三部数据渲染
+		
+//		因为在保存对象之前arr是空，allmsg也无数据
+//		如果allmsg里面有数据 就需要把数据转化成对象 填入arr中，才可以使用push添加。
+		if(localStorage.allmsg){
+			var arr=JSON.parse(localStorage.allmsg);
+		}else{
+			var arr=[];
+		}
+//		1.保存数据 
+		oBtn[0].onclick=function(){  
+			var obj={
+					name:oInp[0].value,
+					tel:oInp[1].value,
+					mark:oInp[2].value
+				};
+			arr.push(obj);
+//			因为arr 是对象   web存储都是以字符串 键值对 形式存在
+			localStorage.allmsg=JSON.stringify(arr); 
+		};
+		
+//		2.检索  渲染数据
+		oBtn[1].onclick=function(){
+			for(var i=0; i<arr.length; i++){
+				if(oInp[3].value==arr[i].name){
+					oUl.innerHTML+="<li>"+arr[i].name+"</li><li>"+arr[i].tel+"</li><li>"+arr[i].mark+"</li>"
+				}
+				
+			}
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+</html>

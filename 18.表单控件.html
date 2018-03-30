@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+//		placeholder 输入预期输入字段的提示信息
+//		autofocus 自动获取焦点
+//		required 规定必须在提交之前写入文字
+//		autocomplate 是否保存用户之前输入的值   默认on保存    off不保存
+//		action	定义向何处发送数据
+//		formaction 属性 覆盖form 元素里的action属性 .且该属性必须与type="submit"
+//配合使用
+//		pattern 规定表单里的正则表达式
+	</script>
+	<body>
+		<form action="" method="post">
+			邮箱：<input type="email" placeholder="请输入邮箱"/><br />
+			搜索：<input type="search" autofocus/><br />
+			url地址：<input type="url" required/><br />
+			电话：<input type="tel" /><br />
+			数字：<input type="number" max="10" min="0" value="5" step="2"/> （最大值 最小值 当前值 步长） <br />
+			范围：<input type="range" max="10" min="0" value="6" step="2" onchange="alert(this.value)"/> <br />
+			颜色：<input type="color" onchange="alert(this.value)"/><br />
+			日期：<input type="date" onchange="alert(this.value)"/> <br />
+			月份：<input type="month" /><br />
+			周：<input type="week" /><br />
+			时间：<input type="time" /><br />
+			
+			<!--autocomplate-->
+			<input type="text" name="user" autocomplete="on"/>
+			<input type="text" name="user" autocomplete="off"/>
+			<br />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<br /><br />
+		<form action="http://www.baidu.com">
+			<input type="text" placeholder="请输入4-16个字符" pattern="\d{4,16}"/>
+			<input type="submit" value="提交" formaction="http://www.qq.com"/>
+		</form>
+		
+		
+	</body>
+</html>

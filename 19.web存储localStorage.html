@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload=function(){
+//			1.先判断 浏览器是否支持本地存储
+//				if(typeof(Storage)=="undefined"){
+//					alert("不支持")
+//				}else{
+//					alert("支持")
+//				}
+
+//			2.两个本地存储对象localStorage sesstionStorage
+			localStorage.name="小花";
+			localStorage.age=18;
+			localStorage.name="小白";	//如果相同属性名 下面的会覆盖掉上面的
+			
+			
+//			3.setItem() 设置数据 键值对形式
+			localStorage.setItem("name","翡翠");
+			localStorage.setItem("name1","翡翠1");
+			localStorage.setItem("name2","翡翠2");
+			
+			
+//			4.getItem() 获取数据
+			console.log(localStorage.getItem("name"));
+			console.log(localStorage.getItem("age"));
+			
+//			5.删除数据
+//				a.删除单个数据 removeItem()
+//				b.删除所有数据 clear()
+//			localStorage.removeItem("name1")	
+//			localStorage.clear()	
+			
+			
+		}
+		
+	</script>
+	<body>
+		
+	</body>
+</html>

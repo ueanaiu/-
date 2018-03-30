@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	媒体元素	
+		audio 音频
+		video 视频
+		source 媒体容器
+		controls 显示控制面板
+		loop  循环播放
+		autoplay 自动播放
+		play()  媒体播放
+		pause() 媒体暂停
+		load()  重新加载
+	表单	:	
+		placeholder 属性提供可描述输入字段预期值的提示信息
+		autocomplete 是否保存用户之前输入的值  
+		autofocus 属性 自动获得焦点
+		required 属性 规定 必需在提交之前填写输入字段
+		action 属性规定当提交表单时，向何处发送表单数据
+		formaction 属性覆盖 form 元素的 action 属性。该属性与 type="submit" 配合使用。
+		pattern 属性规定用于验证输入字段的模式。相当于正则表达式 。
+
+	本地存储:
+			两个对象 localStorage 和sessionStorage:
+			设置/保存数据：localStorage.setItem(key,value);
+			读取数据：localStorage.getItem(key);
+			删除单个数据：localStorage.removeItem(key);
+			删除所有数据：localStorage.clear();
+			
+	拖放:
+		设置元素为可拖放：draggable="true“
+		
+		拖放元素事件：事件对象为被拖拽元素（拖动的元素）
+		dragstart:拖拽前触发    
+		drag：拖拽前、拖拽结束之间，连续触发 
+		dragend:拖拽结束触发
+		
+		目标元素事件：目标元素为存放拖动对象的元素
+		dragenter:进入目标元素触发，相当于mouseover
+		dragover:进入目标，离开目标之间，连续触发
+		dragleave:离开目标元素触发，相当于mouseout
+		drop:在目标元素上释放鼠标触发（也就是拖放完成的时候 ）
+		
+		解决火狐下的问题：必须设置dataTransfer对象的setData getData方法才可以拖拽除图片外的其他标签
+	</script>
+</html>

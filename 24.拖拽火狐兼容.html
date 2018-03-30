@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="drag" draggable="true" style="width: 300px;height: 200px; background: yellow;"></div>
+		<div id="div" style="width: 500px;height: 300px; border: 1px solid;"></div>
+	</body>
+	<script type="text/javascript">
+		var oDrag=document.getElementById("drag");
+		var oDiv=document.getElementById("div");
+		
+//	在火狐下 必须用dataTransfer对象 及其 setData()和getData() 方法	
+		oDrag.ondragstart=function(e){
+			var ev=e||event;
+//			setData()方法设置key 和 value
+			ev.dataTransfer.setData("key",oDrag.id);
+		};
+		oDiv.ondragover=function(){
+			return false;
+		};
+		oDiv.ondrop=function(e){
+			var ev=e||event;
+//			getData() 获取 key 值 得到 value
+			var d=ev.dataTransfer.getData("key");
+			var div=document.getElementById(d);
+			this.appendChild(div);
+		}
+		
+		
+		
+		
+	</script>
+</html>

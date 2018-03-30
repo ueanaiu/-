@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload=function(){
+			var oA=document.getElementById("a1");
+			var oBtn=document.getElementsByTagName("button");
+			
+			oBtn[0].onclick=function(){
+				oA.play();
+			};
+			
+//			currentTime 播放到哪  用的时间 单位：秒
+			setInterval(function(){
+				console.log(oA.currentTime) 
+			},1000);
+			
+//			oA.currentTime=25;
+
+//			duration 媒体播放的总时间 单位：秒
+			console.log(oA.duration);
+			
+//			volume 音量
+//			oA.volume="0.6";
+			console.log(oA.volume);
+			
+//			muted 是否静音
+//			oA.muted=true;
+			console.log(oA.muted);
+			
+//			paused	媒体是否暂停(只读)
+			console.log(oA.paused);
+			
+			
+//			ended 媒体是否结束(只读)
+			
+//			error 媒体发生错误的时候返回错误代码 (只读)
+//			没有错误返回null
+
+//			currentSrc 返回媒体路径
+			
+//			全屏 
+//			oV.mozRequestFullScreen();
+//			oV.webkitRequestFullScreen();
+		}
+	</script>
+	<body>
+		<!--<audio id="a1" controls autoplay loop>-->
+		<audio id="a1" controls>
+			<source src="媒体资源/johann_sebastian_bach_air.mp3"/>
+			您的浏览器不支持音频播放
+		</audio>
+		<button>播放</button>
+		<button>暂停</button>
+		<button>重新加载</button>
+		
+	</body>
+</html>

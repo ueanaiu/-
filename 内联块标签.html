@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>内联块标签</title>
+	</head>
+	<body>
+		<!--img:图片标签-->
+		<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516187955114&di=e8fb560fa7d9b929bf41bde45f234f38&imgtype=0&src=http%3A%2F%2Fimg01.cztv.com%2F201708%2F05%2F72f3453c778b69783def4589fba0045e.jpg"/>
+		<!--
+			src: source的缩写，表示图片的路径
+				这个路径可以是网络的路径
+				也可以是本地的相对路径
+			1.当引入的图片跟HTML文件在同一目录下的时候，
+			直接写引入的图片名字就可以。
+			2.当引入的图片在HTML文件的下一级目录的时候，
+			我们的src地址，需要先找到图片文件所在的目录，
+			然后才能引入图片文件
+			index.html   img文件夹
+						 test
+						 1.jpg
+			src = "img/test/1.jpg"
+			
+			3.当我们引入的图片文件在上一级目录的情况下
+				test文件夹                   2.jpg
+				html文件             
+				index.html
+			src = "../../2.jpg"
+			跳到上一级目录用  ../
+			跳一层   ../
+			跳两层   ../../
+		-->
+		<img src="1.jpg" alt="" />
+		<img src="img/dali.jpg" alt="" />
+	</body>
+</html>
