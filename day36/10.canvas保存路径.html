@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+		
+//		save() 保存路径   restore()恢复路径
+		ctx.save() //保存路径
+		ctx.fillStyle="red"
+		ctx.beginPath(); //开始路径
+		ctx.moveTo(50,100);//起点
+		ctx.lineTo(150,50);//结束点
+		ctx.lineTo(250,200);//结束点
+		ctx.closePath();//闭合路径
+		ctx.fill();
+		ctx.restore() //恢复路径
+		
+		
+		ctx.beginPath(); //开始路径
+		ctx.moveTo(300,100);//起点
+		ctx.lineTo(400,50);
+		ctx.lineTo(500,200);
+		ctx.closePath();//闭合路径
+		ctx.fill();
+		
+
+
+		
+	</script>
+</html>

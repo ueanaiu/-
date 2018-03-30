@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+	
+//		arcTo() 方法在画布上创建介于两个切线之间的弧/曲线。
+
+//		ctx.arcTo(x1,y1,x2,y2,r)
+//			x1	弧的起点的 x 坐标
+//			y1	弧的起点的 y 坐标
+//			x2	弧的终点的 x 坐标
+//			y2	弧的终点的 y 坐标
+//			r	弧的半径		
+
+		ctx.moveTo(100,200);
+		ctx.arcTo(100,100,200,100,50); 
+		ctx.stroke(); 
+		
+		
+		
+	</script>
+</html>

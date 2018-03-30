@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+		
+//		1.绘制方块 
+		ctx.fillRect(50,50,100,100) //实心方块 （默认为黑色）
+//		共4个参数 :
+//		第一对参数 代表方块的左上角坐标
+//		第二对参数 代表方块的宽和高
+		
+		ctx.strokeRect(180,50,100,100) //空心方块（默认为黑色）
+//		共4个参数 :
+//		第一对参数 代表方块的左上角坐标
+//		第二对参数 代表方块的宽和高
+		
+		
+	</script>
+</html>

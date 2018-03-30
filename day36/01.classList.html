@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				height: 200px;
+				border: 1px solid #000;
+			}
+			.active1{
+				border:10px solid;
+			}
+			.active2{
+				background: red;
+			}
+			.active3{
+				font-size: 50px;
+			}
+		</style>	
+	</head>
+	<body>
+		
+		<div class="active1">classList属性</div>
+		
+		<br />
+		<button>classList获取类</button>
+		<button>add()添加类</button>
+		<button>remove()删除类</button>
+		<br /><br />
+		<button>toggle()切换类</button>
+		<button>length 获取类名长度</button>
+		<button>contains()判断指定的类是否存在</button>
+		<br /><br />
+		<button>item(index)通过索引获取对应类名</button>
+	</body>
+	<script type="text/javascript">
+//		补充内容:
+//		classList  是只读属性
+//		语法：element.classList
+//		用来操作类的
+		var oDiv=document.getElementsByTagName("div")[0];
+		var oBtn=document.getElementsByTagName("button");
+//		1.获取类
+		oBtn[0].onclick=function(){
+			alert(oDiv.classList)
+		}
+//		2.add()添加类
+		oBtn[1].onclick=function(){
+			oDiv.classList.add("active2","active3")
+		}
+//		3.remove()删除类
+		oBtn[2].onclick=function(){
+			oDiv.classList.remove("active1")
+		}
+//		4.toggle()切换类
+		oBtn[3].onclick=function(){
+			oDiv.classList.toggle("active2")
+		}
+//		5.length 获取类名长度
+		oBtn[4].onclick=function(){
+			alert(oDiv.classList.length)
+		}
+//		6.contains()判断指定的类是否存在 返回true/false
+		oBtn[5].onclick=function(){
+			alert(oDiv.classList.contains("active2"))
+		}
+//		7.item(index)通过索引获取对应类名  , 如果没有返回null
+		oBtn[6].onclick=function(){
+			alert(oDiv.classList.item(1))
+		}
+		
+		
+		
+	</script>
+</html>

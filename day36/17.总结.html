@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		classList 属性 (只读)
+			语法:element.classList 
+			element.classList  获取类名
+			add()  添加类
+			remove()  移除类
+			toggle()  切换类
+			length    获取类名长度
+			contains()  判断指定的类名是否存在。
+			item(index) 通过索引获取类名
+			
+		html5 两种绘图方式	 svg & canvas
+		Canvas 与 SVG 的比较不同之处:
+			Canvas
+			依赖分辨率
+			不支持事件处理器
+			弱的文本渲染能力
+			能够以 .png 或 .jpg 格式保存结果图像
+			最适合图像密集型的游戏，其中的许多对象会被频繁重绘
+			SVG
+			不依赖分辨率
+			支持事件处理器
+			最适合带有大型渲染区域的应用程序（比如谷歌地图）
+			复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）
+			不适合游戏应用
+		
+		SVG 使用:
+			网页中使用美工做好的svg图片
+			可直接使用SVG标签定义在网页中
+			作为背景引入
+			用 iframe 标签的 src 引入
+			
+		CANVAS:
+		使用:    canvas标签 创建画布
+				 通过 js脚本语言 动态绘制图像，
+			
+		绘制图像:	
+		1.获取画布：var c=document.getElementById("myCanvas");
+		2.创建一个绘图环境 ,2d的场景: var ctx=c.getContext("2d");	
+		3.绘制图像： 如:ctx.fillRect(0,0,100,100);
+		4.绘图:
+			实心方块：fillRect（L,T,W,H）默认颜色为黑色 。
+			空心方块：strokeRect（L,T,W,H）带边框的方框 默认颜色为黑色 ,
+			ctx.fillStyle="#FF0000"; 填充颜色 （默认为黑）
+			ctx.lineWidth=10;  边框线宽度，是一个数值
+		5.绘制路径:
+			beginPath(); 开始绘制路径
+			closePath(); 结束绘制路径
+			moveTo(x,y) 定义线条开始坐标
+			lineTo(x,y) 定义线条结束坐标
+			stroke(), 画线，默认黑色
+			fill(), 填充，默认黑色
+			rect(), 矩形区域
+			clearRect(),  删除一个画布的矩形区域 （一般用于清空画布）
+			清空画布
+			ctx.clearRect(0,0,canvas.width,canvas.height)
+			save(), 保存路径
+			restore(), 恢复路径 
+		6.绘制圆
+			arc() 方法创建弧/曲线（用于创建圆或部分圆）
+			arc( x , y , 半径，起始弧度，结束弧度，旋转方向)
+			x,y起始位置 （圆心的坐标）
+			弧度与角度的关系：弧度=角度*Math.PI/180 ;
+			旋转方向：顺时针（默认：false）、逆时针（true）
+			
+			
+			
+			
+	</script>
+</html>

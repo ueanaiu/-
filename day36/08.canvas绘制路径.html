@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+		
+//	绘制路径	
+//		空心图
+		ctx.beginPath() //开始绘制路径
+		ctx.moveTo(50,100); //起始点
+		ctx.lineTo(150,10); //在画布中绘制的一个坐标为150,10 的点
+		ctx.lineTo(250,200); //在画布中绘制的一个坐标为250,200 的点
+		ctx.lineTo(300,150); //在画布中绘制的一个坐标为300,150 的点
+		ctx.closePath() ;//结束绘制路径 （闭合路径）
+		ctx.strokeStyle="red"; //设置线条颜色
+		ctx.stroke();//用stroke()方法用 moveTo() 和 lineTo()用实线连起来
+		
+//		实心图
+		ctx.beginPath() //开始绘制路径
+		ctx.moveTo(300,100); //起始点
+		ctx.lineTo(400,10); //在画布中绘制的一个坐标为400,10 的点
+		ctx.lineTo(500,200); //在画布中绘制的一个坐标为500,200 的点
+		ctx.lineTo(550,150); //在画布中绘制的一个坐标为550,150 的点
+		ctx.closePath() ;//结束绘制路径 （闭合路径）
+		ctx.fillStyle="red";
+		ctx.fill();
+		
+	</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+		
+		ctx.rect(100,100,200,150); //rect()定义矩形
+//		ctx.stroke(); //空心矩形
+		ctx.fill();//实心矩形
+		
+//		clearRect() 删除矩形的某个区域
+		ctx.clearRect(100,100,100,75);
+//		清空画布
+//		ctx.clearRect(0,0,canvas.width,canvas.height)
+		
+	</script>
+</html>

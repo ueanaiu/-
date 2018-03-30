@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+		
+		ctx.beginPath();//绘制开始路径
+		ctx.lineWidth=30;
+		ctx.lineCap="butt"; //默认样式
+//		ctx.lineCap="round"; //圆角
+//		ctx.lineCap="square"; //方角线帽
+		ctx.moveTo(100,100);
+		ctx.lineTo(100,300);
+		ctx.stroke();
+		ctx.closePath();//绘制结束路径
+		
+		
+		
+
+
+		
+	</script>
+</html>

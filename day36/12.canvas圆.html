@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+	
+//		arc() 创建带弧度的曲线 / 圆
+//		arc(x,y,r,开始弧度，结束弧度，旋转方向)
+//		x,y 表示圆心点坐标
+//		r 半径
+		
+//		弧度=旋转的度数*Math.PI/180   （记住）
+
+//			 Math.PI ：π
+// (科普)   周长=2PIr; 2PI=周长/r;  PI=周长/2r=周长/直径; 
+//			π=180度; 2PI=360度
+//			“PI/180*一次旋转的角度数（弧度）”
+		
+//		ctx.beginPath();//开始绘制路径
+//		ctx.moveTo(200,200) //找到圆心点
+//		ctx.arc(200,200,150,12*Math.PI/180,90*Math.PI/180,false) //顺时针旋转270度
+//		ctx.closePath();//结束绘制路径 （闭合路径）
+//		ctx.stroke();
+
+
+
+//	表盘思路
+//		ctx.beginPath()
+//		ctx.moveTo(200,200) 
+//		ctx.arc(200,200,150,2*6*Math.PI/180,3*6*Math.PI/180,false);
+//		ctx.stroke();
+		
+		
+		ctx.beginPath()
+		for(var i=0 ; i<60; i++){
+			ctx.moveTo(200,200) 
+			ctx.arc(200,200,150,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+		}
+		ctx.stroke();
+		
+		
+	</script>
+</html>
