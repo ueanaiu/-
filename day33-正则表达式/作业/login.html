@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+	<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	body{
+		margin:0;
+		padding:0;
+		font-size:14px;
+		line-height:25px;
+	}
+	.main{
+		width:900px;
+		margin-left:auto;
+		margin-right:auto;
+		}
+	
+	.left{
+		text-align:right;
+		width:180px;
+		height:25px;
+		padding-right:5px;
+		}
+	.inputs{
+		width:130px;
+		height:16px;
+		border:solid 1px #666666;
+		float:left;
+		margin-right:5px;
+		}
+	.prompt{
+		margin-left:10px;
+		color:#F00;
+		}	
+	</style>
+	</head>
+	<body>
+	<div class="main"><img src="images/logo.jpg" alt="logo"/></div>
+	<div class="main"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <tr>
+	    <td class="left"></td>
+	    <td>&nbsp;</td>
+	  </tr><tr>
+	    <td class="left">用户名：</td>
+	    <td><input id="user" type="text" class="inputs" /><div id="user_prompt" class="prompt"></div></td>
+	  </tr>
+	 <tr>
+	    <td class="left">Email地址：</td>
+	    <td><input id="email" type="text" class="inputs"/><div id="email_prompt" class="prompt"></div></td>
+	  </tr>
+	 <tr>
+	    <td class="left">手机号码：</td>
+	    <td><input id="mobile" type="text" class="inputs"/><div id="mobile_prompt" class="prompt"></div></td>
+	  </tr>
+	 <tr>
+	    <td class="left">登录密码：</td>
+	    <td><input id="pwd" type="password"  class="inputs"/><div id="pwd_prompt" class="prompt"></div></td>
+	  </tr>
+	 <tr>
+	    <td class="left">密码确认：</td>
+	    <td><input id="repwd" type="password"  class="inputs"/><div id="repwd_prompt" class="prompt"></div></td>
+	  </tr>
+	 <tr>
+	    <td class="left">&nbsp;</td>
+	    <td><input name="" type="image" src="images/login.jpg" /></td>
+	 </tr>
+	</table>
+	</div>
+	</body>
+	<script type="text/javascript">
+		function getById(id){
+			return document.getElementById(id);
+		}
+		var check = function(id,fn){
+			getById(id).onblur = fn;
+		}
+		var setMsg = function(id,txt){
+		    getById(id).nextElementSibling.innerHTML = txt 
+		}
+		
+		check("user",function(){
+			if(/^[a-zA-Z][\w_]{4,15}$/.test(user.value)){
+				setMsg("user","正确");
+			}else{
+				setMsg("user","用户名必须4-15位");
+			}
+		})
+		check("email",function(){
+			if(/^\w+@\w+(\.[a-zA-Z]{2,3}){1,2}$/.test(email.value)){
+				setMsg("email","正确");
+			}else{
+				setMsg("email","Email格式不正确，例如web@sohu.com");
+			}
+		})
+		check("mobile",function(){
+			if(/^1\d{10}$/.test(mobile.value)){
+				setMsg("mobile","正确");
+			}else{
+				setMsg("mobile","手机号码不正确，请重新输入");
+			}
+		})
+		check("pwd",function(){
+			if(/^[a-zA-Z0-9]{4,10}$/.test(pwd.value)){
+				setMsg("pwd","正确");
+			}else{
+				setMsg("pwd","密码不能含有非法字符，长度在4-10之间");
+			}
+		})
+		check("repwd",function(){
+			if(pwd.value==repwd.value){
+				setMsg("repwd","正确");
+			}else{
+				setMsg("repwd","两次输入的密码不一致");
+			}
+		})
+	</script>
+</html>
