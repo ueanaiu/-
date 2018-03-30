@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+	
+//	一个控制点的贝塞尔曲线	
+//			context.quadraticCurveTo(X1,Y1,x,y);
+//			X1	贝塞尔控制点的 x 坐标
+//			Y1     贝塞尔控制点的 y 坐标
+//			x	结束点的 x 坐标
+//			y	结束点的 y 坐标		
+		
+//		ctx.beginPath();
+//		ctx.moveTo(100,200);
+//		ctx.quadraticCurveTo(100,100,200,100)
+//		ctx.stroke()
+		
+		
+//	两个控制点的贝塞尔曲线 	
+//			context.bezierCurveTo(X1,Y1,X2,Y2,x,y);
+//			X1	第一组控制点的 x 坐标
+//			Y1     第一组控制点的 y 坐标
+//			X2	第二组控制点的 x 坐标
+//			Y2     第二组控制点的 y 坐标
+//			x	结束点的 x 坐标
+//			y	结束点的 y 坐标
+		ctx.beginPath();
+		ctx.moveTo(100,200);
+		ctx.bezierCurveTo(100,100,200,200,200,100)
+		ctx.stroke()
+
+		
+	</script>
+</html>

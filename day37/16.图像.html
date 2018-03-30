@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid;
+			}
+			img{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="pic1.jpg"/>
+	<!--A.创建画布-->
+		<canvas width="800" height="500"></canvas>
+	</body>
+	<script type="text/javascript">
+//		canvas 标签 默认宽高 300 150
+//	B.获取画布
+		var canvas=document.getElementsByTagName("canvas")[0];
+//	C.创建环境
+		var ctx=canvas.getContext("2d"); //获取画布上下文 创建2d场景
+	
+		var img=document.getElementsByTagName("img")[0];
+		
+		img.onload=function(){
+			ctx.drawImage(img,10,10)
+		}
+		
+		ctx.shadowBlur=50;
+		ctx.shadowOffsetX=20;
+		ctx.shadowOffsetY=20;
+		ctx.shadowColor="royalblue";
+		
+		
+	</script>
+</html>
