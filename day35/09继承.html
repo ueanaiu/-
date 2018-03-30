@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>继承</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(){
+			this.type = "人";
+		}
+		Person.prototype.eat = function(){
+			console.log("吃饭")
+		}
+		Person.prototype.sleep = function(){
+			console.log('i want sleep');
+		}
+		
+		function Teacher(){
+			this.teach = function(){
+				console.log('我会教书');
+			}
+		}
+		//1. 构造函数内部和构造函数原型上的属性和方法都会继承
+		Teacher.prototype = new Person();
+		var t1 = new Teacher();
+		console.log(t1.type);
+		t1.eat();
+		t1.sleep();
+		
+		function Tree(){
+			this.type = "树";
+		}
+		Tree.prototype.job = function(){
+			console.log("光合作用");
+		}
+		
+		function AppleTree(){
+			this.work = function(){
+				console.log("结苹果");
+			}
+		}
+		//2.只能继承父类构造函数原型上定义的属性和方法，父类构造函数内部的属性和方法继承不到
+		AppleTree.prototype = Tree.prototype;
+		var apple = new AppleTree();
+		//console.log(apple.job);
+		apple.job();
+		console.log(apple.type);
+		
+	</script>
+</html>

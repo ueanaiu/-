@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>工厂模式</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function factory(name,age,sex){
+			var obj = {};
+			obj._name = name;
+			obj._age = age;
+			obj._sex = sex;
+			obj.sayHello = function(){
+				console.log("hello,my name is" + this._name,"i am "+this._age + "years old, i am a" + this._sex);
+			}
+			return obj;
+		}
+		
+		var lisi = factory("lisi",19,'boy');
+		var zhangsan1 = factory('zhangsan',20,'boy');
+		var zhangsan2 = factory("zhangsan",20,'boy');
+		console.log(zhangsan1 == zhangsan2);
+		
+		
+		//console.log(zhangsan._age);
+		//zhangsan.sayHello();
+		
+		/*
+		 * 工厂模式创建对象
+		 * 优点：可以快速便捷的创建具有相同属性和方法的对象
+		 * 缺点：会造成不必要的内存浪费
+		*/
+		
+	</script>
+</html>

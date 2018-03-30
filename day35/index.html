@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//1.创建AJAX请求对象
+		var xhr = new XMLHttpRequest();//IE7+ 
+		var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		
+		//2.建立连接
+		xhr.open("POST","index.php",true);
+		//4.监测状态码的变化
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				//请求成功
+				this.responseText //string
+				
+				//将json串转换为json对象
+				JSON.parse();
+			}
+		}
+		
+		xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+		var data = "username=xxx&password=xxx";
+		
+		//3.发送请求
+		xhr.send(data);
+		
+		//面向对象
+		//1.工厂模式 -- 面向过程
+		//	注意:1.创建一个空对象     2.return obj
+			//优点：可以快速便捷的创建具有相同属性和方法的对象
+			//缺点：占用内存
+		//2.构造函数 -- 面向对象
+			//1.函数名首字母大写
+			//2.new 关键字调用
+			//3.this指向实例化对象
+		
+		//prototype  继承
+		child.prototype = new Parent();
+		child.prototype = Parent.prototype;
+		
+		//call apply
+		
+		//constructor   instanceof  __proto__
+		
+		
+		
+		
+		
+	</script>
+</html>

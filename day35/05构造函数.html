@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>面向对象-构造函数</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//构造函数：主要用来在创建对象时，初始化对象
+		//1.函数名首字母必须大写
+		//2.new + 函数名()
+		//3.参数
+		//4.this关键字
+		
+		function Person(name,age,sex){
+//			var obj = {};
+			this.name = name;
+//			this.age = age;
+			//set方法
+			this.setAge = function(){
+				if(age > 150 || age < 0){
+					alert("请输入正确的年龄");
+				}else{
+					this.age = age;
+				}
+			}
+			
+			//get方法
+			this.getName = function(){
+				return this.name;
+			}
+			
+			this.sex = sex;
+			this.sayHello = function(){
+				console.log("hello, my name is " + this.name);
+			}
+			//return obj;
+		}
+		
+		var person1 = new Person("xiaoming",10,'boy');//实例化对象
+		//var person2 = new Person('xiaohua',18,'boy');
+//		person1.sayHello();
+//		person2.sayHello();
+		person1.setAge();
+		console.log(person1.age);
+		console.log(person1.getName());
+		
+		/*
+		 * 	构造函数内的this指向实例化出的对象
+		*/
+		
+		/*
+		 * 	  new :
+              当使用new运算符调用一个函数时，会自动在函数内部创建一个没有任何属性和方法的对象（{}），然后将函数的 this 关键字指向这个new出来的对象，并且将 this 作为return 的默认值。
+		*/
+		
+		/*
+		 * 构造函数  vs 普通函数
+		 * 1.函数名首字母是否大写
+		 * 2.调用时是否加new关键字
+		 * 
+		 * 使不使用new关键字的区别
+		 * 
+		 * 使用new
+		 * 1.创建一个对象
+		 * 2.this指向创建出的这个对象
+		 * 3.对象是函数默认的返回值
+		 * 
+		 * 不适用new
+		 * 1.不会创建对象
+		 * 2.this指向window
+		 * 3.返回值默认是undefined
+		 * 
+		*/
+		
+		
+	</script>
+</html>

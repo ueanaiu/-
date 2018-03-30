@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>prototype</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name){
+			this.name = name;
+//			this.sayHello = function(){
+//				console.log('hello world');
+//			}
+		}
+		
+		Person.prototype.type = "人";
+		Person.prototype.sayHello = function(){
+			console.log("hello");
+		}
+		
+		
+		
+		
+		var p1 = new Person();
+		var p2 = new Person();
+		console.log(p1.type);
+		p2.sayHello();
+//		p1.sayHello();
+//		p2.sayHello();
+		//console.log(p1.sayHello == p2.sayHello);//false
+		console.log(p1.sayHello == p2.sayHello);
+		
+		//prototype（原型）   所有构造函数都具有的属性，我们可以利用这个属性给对象添加相同的属性和方法
+		
+	</script>
+</html>

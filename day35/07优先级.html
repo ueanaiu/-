@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name){
+			this.type = "人";
+			this.name = name;
+		}
+		Person.prototype.age = 20;
+		var p1 = new Person("小明");
+		p1.name = 'xiaoming';
+		console.log(p1.name);
+		console.log(p1.age);
+		/*
+		 * 当我们访问一个对象下面的属性或者方法时，会优先在这个对象下面查找有没有这个属性或者方法，如果存在就直接返回自身的属性或方法;如果没有，就会查找构造函数中是否定义了这个属性或者方法，如果有，那么返回构造函数中定义的内容；如果没有，会查找构造函数的原型上是否存在，依次类推。直到找到顶层原型（Object.prototype）,如果依然没有，则返回undefined。
+		*/
+	</script>
+</html>

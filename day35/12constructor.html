@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>constructor</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//constructor,每一个通过构造函数实例化出来的对象都具有这个属性，属性值指向这个构造函数本身
+		function Cat(){
+			this.type = "猫";
+		}
+		var c1 = new Cat();
+		console.log(c1.constructor);
+		
+		function Dog(){
+			this.type = "狗";
+		}
+		
+		//instanceof 检测运算符左侧的对象是否是由运算符右侧的构造函数所实例化出来
+		console.log(c1 instanceof Dog);
+		
+		//__proto__  标准浏览器提供的用于查看实例化对象构造函数原型(对象上一层原型链)的属性,属性值指向构造函数的prototype
+		//IE下不存在次属性
+		console.log(c1.__proto__ == Cat.prototype);//true
+		
+	</script>
+</html>

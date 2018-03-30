@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {
+			type: "人",
+			eat:function(){
+				alert("吃饭");
+			}
+		}
+		
+		var student = {
+			study:function(){
+				alert('我的任务是学习');
+			}
+		}
+		
+		function copy(target,parent){
+			//第一步，遍历parent下面的属性和方法
+			for(var i in parent){
+				target[i] = parent[i];
+//				console.log(i,parent[i]);
+			}
+			return target;
+		}
+		copy(student,person);
+		console.log(student.type);
+		student.eat();
+		
+	</script>
+</html>

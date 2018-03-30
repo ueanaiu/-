@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>call和apply实现继承</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//call()和apply()都是用来改变this指向的
+		//第一个参数是this指向的对象
+		//区别：call方法第一个参数之后的其他参数不限制类型
+		//apply方法的第二个参数必须是数组
+		//call(obj,arg1,arg2,...);
+		//apply(obj,[arg1,arg2,...])
+		
+		var obj = {
+			name:"zhangsan",
+			age:18
+		}
+		
+		function fn1(a,b){
+			console.log(this);
+			console.log(a + b);
+		}
+		//fn1();
+//		fn1.call(document,2,3);
+		//fn1.apply(obj,[3,4]);
+		
+		var a = 10;
+		var obj = {
+			a:5,
+			name:"test"
+		}
+		function fn2(){
+			alert(this.name);
+		}
+		//fn2();//10
+		//fn2.call(obj,'');
+		
+		function Cat(name){
+			this.name = name;
+			this.showName = function(){
+				console.log(this.name);
+			}
+			this.noise = "miao";
+			this.fn = function(){
+				console.log(this.noise);
+			}
+		}
+		
+		function Dog(name){
+			this.name = "小狗";
+			this.noise = "wang";
+			this.fn = function(){
+				console.log(this.noise);
+			}
+		}
+		
+		var cat = new Cat('小猫');
+		console.log(cat);
+		var dog = new Dog();
+		dog.fn.call(cat,'');
+//		cat.showName();
+		cat.showName.apply(dog,[]);
+		//相当于把cat下面的showName方法应用于dog
+		
+		function Animal(name){
+			this.name = name;
+			this.showName = function(){
+				console.log(this.name);
+			}
+		}
+		
+		function Fish(name){
+			//Animal.call(this,name);
+			Animal.apply(this,[name]);
+		}
+		var fish = new Fish('尼莫');
+		console.log(fish.name);
+		fish.showName();
+		console.log(fish);
+		
+		
+	</script>
+</html>

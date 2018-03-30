@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//给数组添加一个求和的方法
+		Array.prototype.sum = function(){
+			var result = 0;
+			for(var i = 0 ; i < this.length; i++){
+				result += this[i];
+			}
+			return result;
+		}
+		var arr = new Array(1,2,3,4);
+		console.log(arr.sum());
+	</script>
+</html>

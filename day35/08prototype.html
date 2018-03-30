@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Students(classes,school){
+			this.classes = classes;
+			this.school = school;
+		}
+		
+		Students.prototype.study = function(){
+			console.log('好好学习，天天向上');
+		}
+		
+		var s1 = new Students(8,'北京二小');
+		var s2 = new Students(2,'北大附中');
+		
+		//console.log(s1.school)
+		s1.study();
+		s2.study();
+		
+		
+		
+	</script>
+</html>

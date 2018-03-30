@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回顾对象</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//1.初始创建对象
+		var arr = new Array();
+		var num = new Number(5);
+		var str = new String('abc');
+		var date = new Date();
+		var img = new Image();
+		//console.log(str);
+		//console.log(typeof num);
+		
+		//2.
+		var person = {};
+		//添加属性和方法
+		person.name = "zhangsan";
+		person.age = 18;
+		person.sayHello = function(){
+			alert("hello,my name is"+this.name);
+		}
+		
+		//3.
+		var obj = {
+			name:"lisi",
+			age:20,
+			sex:'boy',
+			sayHello:function(){
+				alert("hello");
+			}
+		}
+		
+		var obj1 = {
+			id:1,
+			name:"zhangsan",
+			age:18,
+			sex:"boy"
+		}
+		var obj2 = {
+			id:2,
+			name:"lisi",
+			age:19,
+			sex:"boy"
+		}
+		
+		//这种方式创建对象，效率极低，即便每个对象都拥有相同的属性和方法，也必须重新写一遍
+		
+	</script>
+</html>
