@@ -1,0 +1,15 @@
+//	jQuery 对象 转 DOM对象	
+		var $div=$("div") //jq对象
+//		jq 转 DOM
+		var div=$div.get(1)  //jq对象转换成了DOM 对象， 用自带的get()方法来转
+//		var div=$div[1]  //jq对象转换成了DOM 对象的简写
+		div.innerHTML="hello"
+		
+//	DOM 对象 转 jquery对象	
+		var oDiv=document.getElementsByTagName("div")[2];
+		console.log(oDiv)  //DOM对象  <div>元素三</div>
+		var $d=$(oDiv); //DOM对象转 jq 对象
+		console.log($d) //jq对象  用拥有js封装好的属性和方 ，可以直接调用
+		$d.css("color","red");
+		
+	</script>
