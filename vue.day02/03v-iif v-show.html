@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="app">
+		<p v-if="false">v-if控制</p>
+		<p v-show="isShow">v-show控制</p>
+		<input type="checkbox" v-model="isShow" />
+		<!--v-shoe  v-if 控制元素的显示和隐藏-->
+		<!--v-show 和v-if 的区别
+			1.v-show 控制的 元素的属性  display，false是  属性值为none
+			2.v-if 控制的元素的是否生成  ，false时  不生成元素
+			性能问题：
+			修改属性  >(高于)   创建和删除元素
+			v-show > v-if
+			如果多次操作一元素的显示和隐藏  用v-show
+			v-if   一般用第一次渲染页面时使用
+		-->
+	</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				isShow:false
+			},
+			methods:{//创建方法改变显示隐藏isShow 的 属性值
+				
+			}
+		})
+		
+	</script>
+</html>

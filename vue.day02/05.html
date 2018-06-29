@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		td{
+			width: 70px;
+			height: 20px;
+			text-align: center;
+		}
+		.bg{
+			background: green;
+		}
+		.bgs{
+			background: red;
+		}
+		</style>
+	</head>
+	<body>
+	<div id="app">
+		<p><input type="text" v-model="text"/></p>
+		<button v-on:click="printText">打印</button>
+		<button v-on:click="clearText">清空</button>
+		<button v-on:click="add">向数组尾部添加</button>
+		<button v-on:click="pops">删除尾部元素</button>
+		<button v-on:click="shifts">删除第一项</button>
+		<!--vue实现的步骤
+		1.在Vue实例中写数据data
+		2.在Vue实例上写处理数据的方法  methods  改变data的方法
+		3，通过指令 把数据或方法绑定到具体数据dom元素上-->
+		<ul>
+			<li v-for="(num,index) in arr">{{num}} <button v-on:click="del(index)">删除</button></li>
+		</ul>
+		<!--push 向数组尾部添加    
+		pop删除尾部元素  
+		shift 删除数组第一项   
+		UNshift向数组头部添加
+		splice  数组的删除元素 替换修改元素
+		-->
+		<p>姓名：<input type="text" v-model="person.name"/></p>
+		<p>年龄：<input type="text" v-model="person.age"/></p>
+		<p>性别：
+			<select v-model="person.sex">
+				<option value="1">男</option>
+				<option value="0">女</option>
+			</select>
+		</p>
+		<button v-on:click="adds">添加</button>
+		<button v-on:click="clearText">清空</button>
+		<table border="2" style="border-collapse: collapse;">
+			<tr>
+				<th v-for="num in arrs">{{num}}</th>
+			</tr>
+			<tr v-for="(item,index) in items" v-on:mouseover="over(index)" v-on:mouseout="out(index)" v-bind:class="[{bg:index%2==0?true:false},{bgs:isRun==index?true:false}]">
+				<td>{{item.name}}</td>
+				<td>{{item.age}}</td>
+				<td>{{item.sex==0?"女":"男"}}</td>
+				<td><button v-on:click="dels(index)">{{item.dele}}</button></td>
+			</tr>
+		</table>
+	</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				isRun:"-1",
+				person:{
+					name:"1",
+					age:"1",
+					sex:"1",
+				},
+				text:"inputz中的数据",
+				arr:[1,22,3],
+				arrs:["姓名","年龄","性别","删除"],
+				items:[
+					{"name":"张三","age":18,"sex":0,"dele":"删除"},
+					{"name":"孙七","age":40,"sex":1,"dele":"删除"},
+					{"name":"吴九","age":20,"sex":0,"dele":"删除"},
+					{"name":"郑十","age":20,"sex":1,"dele":"删除"}
+				]
+			},
+			methods:{
+				clearText:function(){//清除数据的方法
+					this.text='';
+					this.person={name:"",age:"",sex:""};
+				},
+				printText:function(){
+					console.log(this.text)
+				},
+				add:function(){
+				//执行操作数据的方法  增删改查
+					this.arr.push(this.text);
+					this.text="";//清空input上的数据
+				},
+				adds:function(){
+				//执行操作数据的方法  增删改查
+				if(this.person.name!=""){
+					this.items.push({"name":this.person.name,"age":this.person.age,"sex":this.person.sex,"dele":"删除"});
+					this.person={name:"",age:"",sex:""};
+					}else{
+						alert("请输入信息")	
+					}
+				},
+				pops:function(){
+					this.arr.pop()
+				},
+				shifts:function(){
+					this.arr.shift()
+				},
+				del:function(index){
+					this.arr.splice(index,1);//参数一：下标  2:个数
+				},
+				dels:function(index){
+					this.items.splice(index,1);
+				},
+				over:function(index){
+					console.log("移入");
+					console.log(index);
+					this.isRun=index;
+				},
+				out:function(index){
+					console.log("移出");
+					this.isRun="-1";
+				}
+				
+			}
+		})
+	</script>
+</html>

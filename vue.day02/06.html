@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+			width: 100px;
+			height: 100px;
+			border: 10px solid red;
+			}
+			.bg{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div v-on:mouseover="over" v-on:mouseout="out" v-bind:class="['box',{bg:isRun}]"></div>
+		</div>
+		<script src="vue.js"></script>
+		<script >
+			new Vue({
+				el:"#app",
+				data:{
+					isRun:false//不使用背景颜色  设置默认   控制是否使用背景颜色
+				},
+				methods:{
+					over:function(){
+						console.log("移入");	
+						this.isRun=true;
+					},
+					out:function(){
+						console.log("移出");
+						this.isRun=false;
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

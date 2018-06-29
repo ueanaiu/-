@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.bg{
+				width: 200px;
+				height: 100px;
+				font-family: 22px;
+				background: blanchedalmond;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="app">
+		<!--v-for   循环数组  根据一组数据循环生成-->
+		<!--v-for="数组的一项  in 数组" ----  for（ a  in  xx）-->
+		<ul>
+		<!--在这个元素中可以访问循环出来的东西-->
+			<li v-for="school in arr">{{school}}</li>
+		</ul>
+		<ul>
+		<!--在属性中可以访问循环出来的东西-->
+			<li v-for="school in arr" v-text="school"></li>
+		</ul>
+		
+		<!--item 数组中的某一项   index ：该项的索引-->
+		<!--v-for="(item,index) in arr"-->
+		
+		<!--单双行换色-->
+		<ul>
+			<li v-for="(school,index+1) in arr" v-bind:class="{bg:index%2==0?true:false}">
+				{{index%2==0?true:false}}
+				第{{index}}项==》{{school}}
+			</li>
+		</ul>
+	</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",//挂在到的元素
+			data:{//vue中的数据
+				arr:["aa","bb","cc"]
+			}
+		})
+		
+	</script>
+</html>

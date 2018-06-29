@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		<!--{{a()}}  自动调用-->
+		<!--v-on  通过事件调用 methdes中的方法-->
+		<!--v-on:事件="methodes"中的方法名称-->
+		<!--传的参数：可以是data中的数据  或字符串-->
+		<!--传字符串 要用引号引起来-->
+		<button v-on:click="a">点击</button>
+		<button v-on:click="b('字符串')">传入字符串</button>
+		<!--传data中的数据  还有v-for循环出来的数据-->
+		<button v-on:click="b(text)">传入Vue中的数据</button>
+		
+		<button v-on:click="c">this</button>
+		
+		<p>{{text}}</p>
+		<input type="text" v-model="text"/>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+	
+		var aaa="全局变量";
+//		使用一个变量保存  生成的Vue实例
+		var vm=new Vue({
+			el:"#app",
+			data:{//
+				text:"data中的数据"
+			},
+			methods:{
+				a:function(){//Vue中的方法  通过V-on 触发key:function 方法
+					console.log("methodes中的方法")
+				},
+				b:function(data){//data 表示使用时传入的数据
+					console.log('传入的数据')
+					console.log(data)
+				},
+				c:function(){
+					//访问data中的数据
+					//一般情况下 this指的是 当前的Vue的实例
+//					console.log(vm===this)
+					//vm和this都指当前实例
+					console.log(this.text)
+					//通过this调取data中的数据
+				}
+			}
+		})
+		//通过该Vue实例 vm  获取到对应的methods中的方法  然后进行传	
+		vm.b(aaa)
+	</script>
+</html>

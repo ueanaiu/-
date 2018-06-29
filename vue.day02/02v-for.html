@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<div id="app">
+	<!--v-for  循环对象-->
+	<!--v-for="value in obj"-->
+		<ul>
+			<li v-for="value in obj">{{value}}</li>
+		</ul>
+		<!--v-for="(value,key) in obj"-->
+		<ul>
+			<li v-for="(value,key) in obj">
+				key==>{{key}}----value==>{{value}}
+			</li>
+		</ul>
+		
+		<ul>
+			<li v-for="(value,key,index) in obj">
+			  第{{index}}项----key==>{{key}}----value==>{{value}}
+			</li>
+		</ul>
+	</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+			  //key value
+			  obj:{
+			  a:1111,
+			  b:222,
+			  c:333,
+			  d:444
+			  }
+			}
+		})
+	</script>
+</html>
