@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--router-link|this.$router.push()----会自动识别使用的模式-->
+			<router-link to="/a">a</router-link>
+			<router-link to="/b">b</router-link>
+			<router-view></router-view> 
+		</div>
+		<script src="vue.js"></script>
+		<script src="vue-router.js"></script>
+		<script type="text/javascript">
+			//hash模式：#/--例：#/user
+			//history模式：/ --例：/user
+			//hash模式---->不会发送数据（不会重新加载页面）
+			//history模式---->会发送请求（会重新加载页面）
+			var a={template:"<div>a组件</div>"}
+			var b={template:"<div>b组件</div>"}
+			
+			var router=new VueRouter({
+				routes:[
+					{path:"/a",component:a},
+					{path:"/b",component:b}
+				],
+				mode:"history"
+			})
+			new Vue({
+				el:"#app",
+				router:router
+			})
+		</script>
+	</body>
+</html>

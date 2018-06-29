@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//字符串模板
+		//反引号--用于写字符串模板  可以换行
+		//使用js变量 ${变量名称}
+		var obj={
+			"name": "张三",
+			"age": 18,
+			"sex": 0
+		}
+		var str="/user/"+obj.name+"/"+obj.age+"/"+obj.sex;
+		
+		var str1=`哈哈哈哈哈哈哈哈
+				${str}
+				哈哈哈哈哈哈cc
+				cccc
+				cccccc`
+		console.log(str1);
+		var str2=`/user/${obj.name}/${obj.age}/${obj.sex}`;
+		console.log(str2);
+	</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table {
+				text-align: center;
+				border-collapse: collapse;
+			}
+			
+			.bg {
+				background: red;
+			}
+			
+			.bgHover{
+				background: green;
+			}
+			tr:last-child td button{
+				width: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<table border="" cellspacing="" cellpadding="" width="700px">
+				<tr>
+					<th>序号</th>
+					<th>姓名</th>
+					<th>性别</th>
+					<th>年龄</th>
+					<th>手机号</th>
+					<th>操作</th>
+				</tr>
+				<!--内容-->
+				<tr v-for="(item,index) in items" 
+					v-bind:class="{bg:index%2==1?true:false,bgHover:item.isRun}"
+					v-on:mousemove="overTr(index)"
+					v-on:mouseout="outTr(index)"
+					>
+					<td >{{index+1}}</td>
+					<td v-if="item.isShow">{{item.name}}</td>
+					<!-- 性别   0 女    1 男 -->
+					<!--  三目表达式    条件？内容1 : 内容2 -->
+					<td v-if="item.isShow">{{item.sex ==0?"女":"男"}}</td>
+					<td v-if="item.isShow">{{item.age}}</td>
+					<td v-if="item.isShow">{{item.phone}}</td>
+					<td v-if="item.isShow"><button v-on:click="show(index)">编辑</button><button v-on:click="delPerson(index)">删除</button></td>
+					<td v-if="item.isHide"><input type="text" v-model="item.name" /></td>
+					<td v-if="item.isHide">
+						<select v-model="item.sex">
+							<option value="0">女</option>
+							<option value="1">男</option>
+						</select>
+					</td>
+					<td v-if="item.isHide"><input type="text" v-model="item.age" /></td>
+					<td v-if="item.isHide"><input type="phone" v-model="item.phone" /></td>
+					<td v-if="item.isHide">
+						<button v-on:click="save(index)">保存</button>
+						<button v-on:click="delPerson(index)">删除</button>
+					</td>
+				</tr>
+				<tr><td colspan="6"><button @click="addPerson">添加</button></td></tr>
+			</table>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		new Vue({ // 生成一个vue实例
+				el: '#app', //  挂载到的dom元素
+				data: { //  vue实例带有的数据
+					person: { // input中数据 
+						name: "",
+						age: "",
+						phone:"",
+						sex: "",
+						isRun:false,
+						isShow:true,
+						isHide:false
+					},
+					items: [{ // 每一行的数据 里面  定义一个 控制背景颜色的 数据isRun
+							"isRun":false,
+							"name": "张三",
+							"age": 18,
+							"phone":12345678,
+							"sex": 0,
+							"isShow":true,
+							"isHide":false
+						},
+						{
+							"isRun":false,
+							"name": "李四",
+							"age": 21,
+							"phone":12345678,
+							"sex": 1,
+							"isShow":true,
+							"isHide":false,
+						},
+					]
+				},
+				methods:{ // 方法
+					save:function(index){ //保存
+//						this.items.push(this.person);
+						this.items[index].isHide=false;
+						this.items[index].isShow=true;
+						this.person={name:"",age:"",sex:"","isRun":false,"isShow":true,"isHide":false}
+					},
+					addPerson:function(){ //添加 
+//						this.items.push(this.person);
+						this.person={name:"",age:"",sex:"","isRun":false,"isShow":false,"isHide":true};
+						this.items.push(this.person);
+					},
+					delPerson:function(index){// 删除
+						this.items.splice(index,1)
+					},
+					overTr:function(index){
+						this.items[index].isRun=true;
+					},
+					outTr:function(index){ // 移出 单行
+						// 移出的那行的  isRun 为false
+						this.items[index].isRun=false;
+					},
+					show:function(index){//编辑
+						this.items[index].isHide=true;
+						this.items[index].isShow=false;
+					}
+				}
+			})
+	</script>
+</html>

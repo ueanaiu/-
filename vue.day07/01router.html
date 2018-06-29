@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--to中有/是地址path  没有/是名称name-->
+			<router-link to="/a">a</router-link>
+			<router-link to="/b">b</router-link>
+			<hr />
+			<router-link to="a">a路由</router-link>
+			<router-link to="b">b路由</router-link>
+			
+			<router-link v-bind:to="{name:'a'}">aname</router-link>
+			<router-link v-bind:to="{path:'/b'}">bpath</router-link>
+			<hr />
+			<button @click="goA">goa</button>
+			<button @click="goB">gob</button>
+			<router-view></router-view> 
+		</div>
+		<script src="vue.js"></script>
+		<script src="vue-router.js"></script>
+		<script type="text/javascript">
+			var a={template:"<div>a组件</div>"}
+			var b={template:"<div>b组件</div>"}
+			
+			var router = new VueRouter({
+				routes:[
+				//name  ==》是路由的名称
+				//{path："地址"，component:"组件的选项"，name："路由的名称"}
+					{path:"/a",component:a,name:"a"},
+					{path:"/b",component:b,name:"b"},
+				]
+			})
+			new Vue({
+				el:"#app",
+				router:router,
+				methods:{
+					goA:function(){
+						//this.$router  注入的路由对象
+						//地址/a
+//						this.$router.push("/a")
+//						this.$router.push({path:"/a"})
+						//原生js改变path值
+						window.location.hash="#/a";
+					},
+					goB:function(){
+						//this.$router  注入的路由对象
+						//地址/a
+//						this.$router.push("/b")
+						this.$router.push({name:"b"})
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

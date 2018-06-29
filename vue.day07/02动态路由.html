@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<router-link to="/user/小明/20/男">小明</router-link>
+			<router-link to="/user/小话/18/女">小话</router-link>
+			<hr />
+			<!--v-for渲染组件时要绑定一个key值，key值：代表一个唯一的标识-->
+			<!--v-bind:to="{name:'',path:'',params:{}}"如果有path就用不了params ---这是vue-router中定义的规则-->
+			<!--v-bind:to="{name:'',params:{标记的名称，值}}"-->
+			<router-link v-for="item in items" v-bind:to="{name:'user',params:{name:item.name,age:item.age,sex:item.sex}}"> {{item.name}} </router-link>
+			
+			<button v-for="item in items" @click="goItem(item)">{{item.name}}</button>
+			<button @click="goBack">返回</button>
+			<router-view></router-view>
+		</div>
+		<script src="vue.js"></script>
+		<script src="vue-router.js"></script>
+		<script type="text/javascript">
+			//路由跳转组件：可以通过地址传递数据
+			//动态路由：可以传递参数
+			//html中通过$route.params  获取路哟传递的参数
+			var user={
+				template:"<div>hello--{{$route.params.name}}--{{$route.params.age}}--{{$route.params.sex}}</div>",
+				mounted:function(){//挂载后只会执行一会
+					console.log("挂载后");
+					//this.$route.params---{标记名称：传递的值}
+					console.log(this.$route.params)
+				},
+				updated:function(){//修改
+					console.log("修改后");
+					//this.$route.params
+					console.log(this.$route.params.name)
+				}
+			}
+			var router=new VueRouter({
+				routes:[
+				//  /:标记
+					{path:"/user/:name/:age/:sex",component:user,name:"user"}
+				]
+			})
+			new Vue({
+				el:"#app",
+				router,
+				data:{
+					items: [
+						{ 
+							"name": "张三",
+							"age": 18,
+							"sex": 0
+						},
+						{
+							"name": "李四",
+							"age": 21,
+							"sex": 1
+						},
+					]
+				},
+				methods:{
+					goItem:function(obj){//使用obj参数把数据传递进来
+						//this.$router.push({name:"名称",params:{}})
+//						this.$router.push({
+//							name:"user",
+//							params:{
+//								name:obj.name,
+//								age:obj.age,
+//								sex:obj.sex
+//							}
+//						})
+						var str="/user/"+obj.name+"/"+obj.age+"/"+obj.sex;
+//						this.$router.push(str)
+						window.location.hash="#"+str;
+					},
+					goBack:function(){
+						//返回上一个路径
+						this.$router.go(-1);//返回上一级
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

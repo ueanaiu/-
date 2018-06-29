@@ -1,0 +1,80 @@
+express-generator  生成express项目的脚手架工具
+vue-cli  生成vue项目的脚手架工具
+
+一.生成项目的步骤
+下载vue-cli工具  npm install -g vue-cli
+
+1.vue init webpack  项目名称
+  vue init webpack  fcyd
+2.项目的
+
+
+二.es6的语法
+箭头函数(参数)=>{函数体}
+特点:没有this,如果使用在函数体外面找,找到使用,没找到报错
+
+es6对象的扩展
+{
+	data(){},//对象方法的扩展
+	store,
+	router,//key和vue一样简写
+}
+
+es6中变量的声明:
+let 块级变量   只能在声明的{}中使用  ,超出报错
+const  常量   声明后不可修改:修改会报错
+
+字符串模板:
+反引号``--用于写字符串模板  可以换行
+使用js变量 ${变量名称}
+
+es6 支持模块化*************************************
+//加载  form
+import 保存的变量名称 form '加载资源的路径'
+//暴露
+export default   暴露的内容{}
+-------------------------------------
+在vue-cli项目中  组件怎么写(组件 的选项)  .vue的书写
+
+template----组件的模板                                                                                    ==>注意:更标签
+script---组件的js内容  :(data methods mounted computed)  ==>注意:把对象{}暴露出去
+style---组件的样式																			 ==>scoped:作用范围,指css样式的使用范围
+
+1..vue文件 在路由中使用
+	1)加载要使用的组件
+	2）写在路由的routes{path:'',component}
+	3）app.vue中写 router-link  this.$router.push()
+	
+2.在组件中使用其他组件
+  1）加载要使用的组件
+  2）注入到当前组件里，通过局部组件的方式components
+  3)和HTM中组件的使用方式一样	
+  
+在项目中怎么使用动态路由
+1.组件  接收动态路由传递的数据
+	$router.params.id
+2.在index.js路由文件中  加载该组件 配置 动态的路由/user/:id
+3.在其他组件中写跳转  /user/2
+
+-----------------------------------------------------------------------------
+在vue-cli生成的项目中使用vuex插件
+
+vue-router 在生成项目时下载了vuex
+npm install vuex --save
+
+使用：
+1.在src中新建一个vuex文件夹
+2.创建一个js文件  index.js
+3.在vuex下面的index.js文件中写代码
+	1）加载vue
+	2）加载vuex
+	3)在vue中只用vuex  vue.use()
+	4)暴露一个store实例  new Vuex.store({})
+4.加载到mian.js中注入到vue实例中
+5.在组件中使用
+	
+	
+后台启动的指令：npm start
+mongodb 的启动指令：net start mongodb(用管理员身份启动)
+
+
