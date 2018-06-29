@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{text}}
+		</div>
+	</body> 
+	<script src="vue.js"></script>
+	<script>
+		var vm=new Vue({
+			//el:"#app",
+			data:{
+				text:"vue中data的数据"
+			}
+		})
+		//$mount()----可以把Vue实例挂载到元素上
+		vm.$mount("#app")
+		//$destroy()---销毁  数据 方法 指令与视图直接联系
+		document.onclick=function(){
+			vm.$destroy()//销毁实例
+			console.log("实例已销毁")
+		}
+	</script>
+</html>

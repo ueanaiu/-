@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="runA">运行a</button>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				text:"data中的数据"
+			},
+			methods:{
+				a:function(){//方法
+				console.log("这是自定义a中的方法")
+				console.log(vm.text)
+			}
+//				runA:function(){
+//					this.$options.a()
+//				}
+			},
+			//自定义的属性或方法
+//			a:function(){//方法
+//				console.log("这是自定义a中的方法")
+//				console.log(vm.text)
+//			},
+			b:"b的数据"//属性
+			//通过$options.名称  调用
+			//vm.$options   操作自定义属性或方法的
+		})
+	</script>
+</html>

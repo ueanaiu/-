@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-red-text/>
+			<p v-red>aaaaaaa</p>
+		</div>
+		<div id="app1">
+			<input type="text" v-red-text value="" />
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		//全局的指令---可以在任意的Vue实例中使用    用Vue.directive()定义
+		//私有指令---只能下定义的Vue实例中使用  用directives定义
+		//区别：使用范围不一样    定义方式 不一样
+		new Vue({
+			el:"#app",
+			directives:{//定义有指令的属性
+				//key     : value
+				//指令名称 ：{钩子函数}
+				redText:{
+					bind:function(el){
+						el.style.color="blue"
+					},
+					inserted:function(el){
+						el.focus()
+					}
+				},
+			//简单写法   只会在bind和update时调用
+			//回调————只会在bind和update时调用  
+				red:function(el){
+					el.style.color="red"
+				}
+			} 
+			
+		})
+		new Vue({el:"#app1"})//全局的指令   
+	</script>
+</html>

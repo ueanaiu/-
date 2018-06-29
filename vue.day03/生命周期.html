@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+   <p>{{msg}}</p> 
+    <input type="text" v-model="msg" />
+</div>
+<script> 
+    //    用vm 这个变量保存 生成vue实例
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "数据"
+        },
+		// 生命周期的 状态  ===》 钩子函数
+        beforeCreate: function () { // 创建之前
+            console.log('创建前的状态');
+            console.log('el:' + this.$el);   //undefind
+            console.log('data:' + this.$data); //undefind
+        },
+        created: function () { // 创建后
+            console.log('创建完毕');
+            console.log("%c%s", "color:red", "el:" + this.$el); //undefind
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        beforeMount: function () { // 挂载前
+            console.log('挂载之前'); 
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el); // {{msg}}
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        mounted: function () {// 挂载后    对数据做一些操作
+            console.log('挂载结束');
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el);  // 已经挂在完毕
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        
+        
+        beforeUpdate: function () {// 没更新数据不会执行
+            console.log('更新之前');
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el);                         // 已经挂在完毕
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        updated: function () {
+            console.log('更新完毕');
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el);  // 已经挂在完毕
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        beforeDestroy: function () {  //
+            console.log('销毁之前');
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el);  // 已经挂在完毕
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        },
+        destroyed: function () {
+			//    $destory()  --->销毁实例   清空实例上的方法和指令
+            console.log('销毁完成');
+            console.log("%c%s", "color:red", "el:" + this.$el); //已经被初始化
+            console.log(this.$el);  // 已经挂在完毕
+            console.log("%c%s", "color:red", "data:" + this.$data); //已经被初始化
+        }
+    })
+    
+//   //  点击文档是 销毁实例
+     document.onclick=function(){
+     		console.log("实例被销毁")
+			vm.$destroy() // 销毁实例的方法 	
+     }
+
+
+
+
+
+</script>
+</body>
+</html>
+

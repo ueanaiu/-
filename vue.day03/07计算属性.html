@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>计算前：{{num}}</p>
+			<p>计算后：{{num5}}</p>
+			<button @click="add">num++</button>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				num:10
+			},
+			//计算属性
+			computed:{//原始数据改变后  回到重新计算
+				//key   :value
+				//计算后的名称 ：函数----计算
+				num5:function(){//简单写  get
+					//通过this访问data中数据
+					//计算后通过return输出
+					return this.num*5;
+				},
+				//复杂写法
+				num6:{
+					get:function(){
+						
+					},
+					set:function(){
+						
+					}
+				}
+			},
+			methods:{
+				add:function(){//改变原数据
+					this.num++
+				}
+			}
+		})
+	</script>
+</html>

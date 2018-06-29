@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-mydir:left="'right'">mydir</p>
+			<p v-font="{size:'35px',color:'red'}">v-font</p>
+			<div v-bind:style="{height: size +'px',color:'red'}"> aaaaa</div>		
+		</div>
+	</body> 
+	<script src="vue.js"></script>
+	<script>
+		Vue.directive("mydir",function(el,binding){
+			//el  ---指令操作的元素
+			//binding----绑定时在指令上输入值
+			//binding.name ---指令的名称
+			//binding.arg ---等号左边的值
+			//binding.value---等号右边的值
+			console.log(binding)
+			//binding.value---右边的值  可以是 数组、对象、data中的数据、字符串
+			//console.log(typeof binding.value)//右边值输入什么，返回什么
+		})
+		//设置字体样式的文字颜色和大小
+//		binding.value==>对象  v-font="{size:'35px',color:'red'}"  
+		Vue.directive("font",function(el,binding){
+			//通过el元素设置相应的样式
+			el.style.color=binding.value.color;
+			el.style.fontSize=binding.value.size;
+		})
+		
+		new Vue({
+			el:"#app",
+			data:{
+				size:35,
+				color:"#00f",
+			}
+		})
+	</script>
+</html>

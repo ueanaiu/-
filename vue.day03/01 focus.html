@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-red-text>hi hahaha</p>
+			<input type="text" v-red-text/>
+			<!--<input type="text" v-red value="neid"/>-->
+		</div>
+		<div id="app1">
+			<p v-red-text>app1</p>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//代码自上而下执行
+//		自定义全局指令 放在Vue实例的前面执行
+		//参数：1.指令的名称---使用时加v-前缀 ----v-redtext         
+		//      2.对象--》钩子函数
+		//把文字变红
+		Vue.directive("redText",{
+			bind:function(el){//指令第一次和元素绑定
+				//el挂载到的元素和通过getElement获取的节点一样
+				console.log("钩子阿函数 中的el参数");
+				console.log(el);
+				el.style.color="red";
+			},
+			inserted:function(el){//操作的元素  插入到页面中触发执行元素上的动作
+				el.focus()//获取焦点
+			}
+		})
+		
+		//简单写法   只会在bind和update时调用
+		//参数1：指令名称    参数2：回调————只会在bind和update时调用   
+//		Vue.directive("red",function(el){
+//			el.style.color="red";
+////			el.focus()//获取焦点   s使用不了
+//			
+//		})
+		//使用时加v-前缀 ----v-redtext
+		new Vue({el:"#app"})
+		new Vue({el:"#app1"})
+//		HTML 不区分大小写
+//		js  区分大小写
+//		如果js使用了大写aB  在HTML中使用时变成a—b
+	</script>
+</html>
