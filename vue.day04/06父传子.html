@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+		vue组件 的本质是一个实例
+		vue实例是一个特殊的组件-->
+		 <div id="app">
+		 	<!--通过v-bind绑定接收数据的名称=传递的值-->
+		 	<!--一个接收数据只能写一次-->
+		 	<my-com v-bind:text="'这是传递的值'"></my-com>
+		 	<!--v-bind：接收的数据名称=传递的数据名称-->
+		 	<my-com v-bind:text="a"></my-com>
+		 </div>
+		 <template id="tem">
+		 	<div>
+		 		{{text}}
+		 	</div>
+		 </template>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//父  vue实例  特殊的组件
+		//子  写一个组件
+		Vue.component("myCom",{
+			template:"#tem",
+			props:["text"],//定义接收的数据名称
+			//props定义如何使用名称  ，使用方法和data一样
+			
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				a:"这是vue实例data中的数据"
+			}
+		})
+	</script>
+</html>

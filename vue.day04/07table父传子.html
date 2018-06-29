@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table {
+				text-align: center;
+				border-collapse: collapse;
+			}
+			
+			.bg {
+				background: red;
+			}
+			
+			.bgHover{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p>姓名：<input type="text" v-model="person.name" /></p>
+			<p>年龄：<input type="text" v-model="person.age" /></p>
+			<p>性别：
+				<select v-model="person.sex">
+					<option value="0">女</option>
+					<option value="1">男</option>
+				</select>
+				<button v-on:click="clearPerson">清除</button>
+				<button v-on:click="addPerson">添加</button>
+			</p>
+			<my-table v-bind:items="items"></my-table>
+		</div>
+		<template id="tem">
+			<div>
+				<table border="" cellspacing="" cellpadding="" width="250px">
+					<tr>
+						<th>姓名</th>
+						<th>年龄</th>
+						<th>性别</th>
+						<th>删除</th>
+					</tr>
+					<!--内容-->
+					<tr v-for="(item,index) in items" 
+						v-bind:class="{bg:index%2==1?true:false,bgHover:item.isRun}"
+						v-on:mousemove="overTr(index)"
+						v-on:mouseout="outTr(index)"
+						>
+						<!-- item 对象  {}-->
+						<td>{{item.name}}</td>
+						<td>{{item.age}}</td>
+						<!-- 性别   0 女    1 男 -->
+						<!--  三目表达式    条件？内容1 : 内容2 -->
+						<td>{{item.sex ==0?"女":"男"}}</td>
+						<td><button v-on:click="delPerson(index)">删除</button></td>
+					</tr>
+				</table>
+			</div>
+		</template>
+	</body>
+	<script src="vue.js"></script>
+	<script>
+		//父组件---带有表单元素的  //用vue实例
+		//子组件--表格  //写组件
+		Vue.component("myTable",{
+			template:"#tem",
+			data:function(){
+				return {}
+			},
+			methods:{
+				overTr:function(index){ // 移入 单行
+					// 移入的那行的  isRun 为true
+					
+					this.items[index].isRun=true;
+				},
+				outTr:function(index){ // 移出 单行
+					// 移出的那行的  isRun 为false
+					this.items[index].isRun=false;
+				},
+				delPerson:function(index ){// 删除  表格中数据   index删除项的索引
+					this.items.splice(index,1)
+				},
+			},
+			props:["items"]//接收父级传递
+		})
+		
+		new Vue({
+			el:"#app",
+			data:{
+				person: { // input中数据 
+						name: "",
+						age: "",
+						sex: "",
+						"isRun":false,
+					},
+				items: [{ // 每一行的数据 里面  定义一个 控制背景颜色的 数据isRun
+						"isRun":false,
+						"name": "张三",
+						"age": 18,
+						"sex": 0
+					},
+					{
+						"isRun":false,
+						"name": "李四",
+						"age": 21,
+						"sex": 1
+					},
+				]
+			},
+			methods:{
+				clearPerson:function(){ // 清空
+					this.person={name:"",age:"",sex:"","isRun":false}
+				},
+				addPerson:function(){ //添加 
+					this.items.push(this.person);
+					//  清空之后    断掉了  表格中数据  对   person的引用
+					this.person={name:"",age:"",sex:"","isRun":false}
+				},
+			}
+		})
+	</script>
+</html>

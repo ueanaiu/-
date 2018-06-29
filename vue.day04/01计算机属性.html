@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<div id="app">
+			<p >原始数据：{{num}}</p>
+			<p >计算后：{{num1}}</p>
+			<p>扩大10倍的：{{num2}}</p>
+			<button @click="add">num++</button>
+			<button @click="setNum2">setNum2</button>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:"#app",
+			data:{
+				num:1
+			},
+			computed:{//计算属性的优点：如果原数不变 直接返回上次计算的结果
+				//如果原数发生改变  则重新计算
+				num1:function(){
+					//通过this获取data中的数据
+					//计算后通过return  返回计算后的数据
+					return this.num*5;
+				},
+				num2:{
+					get:function(){//默认的  改变原始数据到计算后---正向
+						console.log("get")
+						return this.num*10;
+					},
+					set:function(val){//计算后的返回到原始的  反向
+						//val  ----修改后的数据
+						console.log(val);
+						console.log("set");
+						//获取到修改后的计算出的数据  然后执行反向计算
+						//反向计算   ：  上面*10  set中就/10
+						//反向计算后通过赋值的方式  赋值给原数据
+						this.num=val/10
+					}
+				}
+			},
+			methods:{
+				add:function(){//改变原数据
+					this.num++
+				},
+				setNum2:function(){
+					//计算出来的数据和data的使用方法一样
+					this.num2=23
+				}
+			}
+		})
+	</script>
+</html>

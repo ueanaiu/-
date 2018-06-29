@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" >
+			<my-vue></my-vue>
+		</div><br />
+		<div id="app1" >
+			<my-vue></my-vue>
+		</div>
+		<template id="tem">
+			<div><!--根标签-->
+				<p>{{num}}</p>
+				<button @click="add">num++</button>
+			</div>
+		</template>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//局部组件写在components属性上
+		//作用范围：只能使用在定义的实例中
+		new Vue({
+			el:"#app",
+			components:{//定义局部组件
+				//key    :value
+				//组件名称：组件选项
+				myVue:{
+					template:"#tem",
+					data:function(){
+						return {
+							num:0,
+						}
+					},
+					methods:{
+						add:function(){
+							this.num++
+						}
+					}
+				}
+			}
+		})
+		new Vue({el:"#app1"})
+	</script>
+</html>

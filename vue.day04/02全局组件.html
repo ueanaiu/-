@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			 <abcd></abcd>
+			 <abcd></abcd>
+			 <abc></abc>
+			 <abc></abc>
+		  	 <ab></ab>
+			 <!--<abcd></abcd>
+			 <abcd></abcd>-->
+			
+		</div>
+		<!--html5 写模板的：  不会在页面上显示出来-->
+		<template id="tem">	<!--template使用放式1【常用】-->
+			<!--要用根标签包裹-->
+			<div>
+				<p>aaaaa</p>
+			</div>
+		</template>
+	</body>
+	<!--type="text/template"  模板--><!--template使用放式2-->
+	<script type="text/template" id="sc">
+		<div>
+			<p>script中的内容</p>
+		</div>
+	</script>
+	<script src="vue.js"></script>
+	<script>	
+		//全局组件
+		//第一个参数 ：组件的名称
+		//参数2：组件的选项
+		Vue.component("abcd",{
+			//注意：要有一个根标签  把所有东西包裹起来  【否则只会读取第一个】
+//			template:"<div><h1>111</h1> <h1>222</h1> <h1>111</h1></div>",//html 中 的具体的节点内容
+			//一个组建中只能有一个模板
+			template:"#tem",//html5 的新标签template【常用】
+		})
+		Vue.component("ab",{
+			template:"<div> <h1>111</h1> <h1>222</h1> <h1>33</h1> </div>",
+		})
+		Vue.component("abc",{
+			template:"#sc",
+		})
+		//使用方法：在Vue的实例中和标签一样
+		//vue组件本质上还是Vue实例  Vue实例上支持的   组件都支持
+		new Vue({
+			el:"#app",
+		})
+	</script>
+</html>
