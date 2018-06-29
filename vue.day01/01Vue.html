@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--div标签   vue管理数据-->
+		<div id="app">
+			 {{ message }}   <!--vue中的插值表达式 做作用：把vue管理的数据显示到HTML中-->  
+		</div>
+		<div id="app-2">
+		  <span v-bind:title="message">
+		    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		  </span>
+		</div>
+		<!---->
+		<!--<ol>
+		  <!-- 创建一个 todo-item 组件的实例 -->
+		  <!--<todo-item></todo-item>-->
+		<!--</ol>-->
+		<div id="app-7">
+		  <ol>
+		    <!--
+		      现在我们为每个 todo-item 提供 todo 对象
+		      todo 对象是变量，即其内容可以是动态的。
+		      我们也需要为每个组件提供一个“key”，稍后再
+		      作详细解释。
+		    -->
+		    <todo-item
+		      v-for="item in groceryList"
+		      v-bind:todo="item"
+		      v-bind:key="item.id">
+		    </todo-item>
+		  </ol>
+		</div>
+	</body>
+	//加载vue.js
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	//写自己的代码
+	<script>
+		var app = new Vue({
+		  el: '#app',    //挂着的的节点  当前生成的vue对象  管理的元素
+		  data: {   //数据 ---》 vue管理的js文件
+		    message: 'Hello Vue!'
+		  }
+		})		
+		//
+		var app2 = new Vue({
+		  el: '#app-2',
+		  data: {
+		    message: '页面加载于 ' + new Date().toLocaleString()
+		  }
+		})
+		//
+//		Vue.component('todo-item', {
+//		  template: '<li>这是个待办项</li>'
+//		})
+//		Vue.component('todo-item', {
+//		  // todo-item 组件现在接受一个
+//		  // "prop"，类似于一个自定义特性。
+//		  // 这个 prop 名为 todo。
+//		  props: ['todo'],
+//		  template: '<li>{{ todo.text }}</li>'
+//		})
+		
+		Vue.component('todo-item', {
+		  props: ['todo'],
+		  template: '<li>{{ todo.text }}</li>'
+		})
+
+		var app7 = new Vue({
+		  el: '#app-7',
+		  data: {
+		    groceryList: [
+		      { id: 0, text: '蔬菜' },
+		      { id: 1, text: '奶酪' },
+		      { id: 2, text: '随便其它什么人吃的东西' }
+		    ]
+		  }
+		})
+	</script>
+	
+</html>

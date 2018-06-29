@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--指令操作-->
+		<div id="app">
+			{{text}}
+			
+			<h1 v-text="text"></h1>
+			<div v-html="text"></div>
+			<hr />
+			<!--指令：封装好的dom操作vue来提供
+			像属性一样去使用：
+			v-text---》innerText   把标签的字符串渲染出字符串
+			v-html---》innerText   把标签的字符串渲染成真正的节点
+			-->
+			<div v-text="htmlStr"></div>
+			<div v-html="htmlStr"></div>
+			<hr />
+			<div v-html="a()"></div>
+			<hr />
+			<!--所有的指令   他们的作用  和插值的表达式一样
+			1.显示data中的数据
+			2.可移执行methods中的方法
+			3.执行js表达式    如果直接写字符串   要用引号引起-->
+			<div v-html="text + '拼接的' "></div>
+		</div>
+	</body>
+	<!--加载vue.js-->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!--写自己的代码-->
+	<script>
+		new Vue({
+			el:"#app",
+			data:{
+				text:"这个是vue中的数据",
+				htmlStr:"<h1>今天好热！！！！！</h1>"
+			}
+		})
+	</script>
+</html>
+
