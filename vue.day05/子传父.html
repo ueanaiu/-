@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--使用子组件  v-on:自定义事件=父级中的方法-->
+			<my-com v-on:myevent="getText"></my-com>
+			<!--注意：父级中的方法不要加括号-->
+			<p>父级--</p>
+			{{text}}
+			<p>--数据</p>
+		</div>
+		<template id="tem">
+			<div>
+				<p>子组件： {{text}}</p>
+				<input type="text" v-model="text"/>
+				<button @click="chuanText">传递 给父组件</button>
+			</div>
+		</template>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//子传父----自定义事件传递
+		//子---触发自定义事件  this.$emit("事件名称"，传递的数据)
+		//父---使用子  通过v-on监听自定义事件---触发父组件的方法
+		//			 v-on： 自定义事件=接收数据的方法
+		//子--组件  父---vue实例
+		
+		Vue.component("myCom",{
+			template:"#tem",
+			data:function(){
+				return{
+					text:"子组件中的事件"
+				}
+			},
+			methods:{
+				chuanText:function(){//通过自定义事件传递给父组件
+					//触发自定义事件   传递数据
+					//this.$emit("事件名称"，传递的数据)
+					this.$emit("myevent",this.text);
+					console.log("chuanText传递数据的方法");
+				}
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				text:""//保存子组件传递过来的数据
+			},
+			methods:{
+				getText:function(data){//子组件传递的数据
+					//接收子组件传递的数据
+					console.log(data)
+					console.log("getText接收的方法")
+					this.text=data;
+				}
+			}
+		})
+	</script>
+</html>

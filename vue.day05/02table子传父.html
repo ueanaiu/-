@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table {
+				text-align: center;
+				border-collapse: collapse;
+			}
+			
+			.bg {
+				background: red;
+			}
+			
+			.bgHover{
+				background: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--子组件触发自定义事件后， 在父级使用子时监听，监听后触发父级的方法-->
+			<my-form v-on:myevent="getData"></my-form>
+			<!--table表格-->
+			<table border="" cellspacing="" cellpadding="" width="250px">
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+					<th>删除</th>
+				</tr>
+				<!--内容-->
+				<tr v-for="(item,index) in items" 
+					v-bind:class="{bg:index%2==1?true:false,bgHover:item.isRun}"
+					v-on:mousemove="overTr(index)"
+					v-on:mouseout="outTr(index)"
+					>
+					<!-- item 对象  {}-->
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+					<!-- 性别   0 女    1 男 -->
+					<!--  三目表达式    条件？内容1 : 内容2 -->
+					<td>{{item.sex ==0?"女":"男"}}</td>
+					<td><button v-on:click="delPerson(index)">删除</button></td>
+				</tr>
+			</table>
+		</div>
+		<template id="tem">
+			<div>
+				<h2>子组件</h2>
+				<p>姓名：<input type="text" v-model="person.name" /></p>
+				<p>年龄：<input type="text" v-model="person.age" /></p>
+				<p>性别：
+					<select v-model="person.sex">
+						<option value="0">女</option>
+						<option value="1">男</option>
+					</select>
+					<button v-on:click="clearPerson">清除</button>
+					<button v-on:click="addPerson">添加</button>
+				</p>
+			</div>
+		</template>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//子：表单内容--把添加的数据传过去
+			//  触发自定义事件  传递数据 通过this.$emit()
+		//父：表格--显示子传递过来的内容
+		//		在使用子时通过v-on监听自定义事件---去触发父级中接收数据的方法
+		//		在接收数据方法中保存子级传递过来的数据（添加的内容）
+		
+		Vue.component("myForm",{
+			template:"#tem",
+			data:function(){
+				return {
+					person: { // input中数据 
+						name: "",
+						age: "",
+						sex: "",
+						"isRun":false,
+					},
+				}
+			},
+			methods:{
+				clearPerson:function(){ // 清空
+					this.person={name:"",age:"",sex:"","isRun":false}
+				},
+				addPerson:function(){ //添加 
+//					this.items.push(this.person);
+					//把添加内容传递给父级的表格
+					//子传父 通过this.$emit('自定义事件'，传递的数据)\n
+					this.$emit("myevent",this.person)
+					this.person={name:"",age:"",sex:"","isRun":false}
+				},
+			}
+		})
+		new Vue({
+			el:"#app",
+			data:{
+				items: [{ // 每一行的数据 里面  定义一个 控制背景颜色的 数据isRun
+						"isRun":false,
+						"name": "张三",
+						"age": 18,
+						"sex": 0
+					},
+					{
+						"isRun":false,
+						"name": "李四",
+						"age": 21,
+						"sex": 1
+					},
+				]
+			},
+			methods:{
+				getData:function(data){//接收数据的方法
+//					data是子级传递过来的数据
+					console.log(data)
+					this.items.push(data)
+				},
+				delPerson:function(index ){// 删除  表格中数据   index删除项的索引
+					this.items.splice(index,1)
+				},
+				overTr:function(index){ // 移入 单行
+					// 移入的那行的  isRun 为true
+					
+					this.items[index].isRun=true;
+				},
+				outTr:function(index){ // 移出 单行
+					// 移出的那行的  isRun 为false
+					this.items[index].isRun=false;
+				}
+			}
+		})
+		
+		new Vue({
+			el:"#app1",
+			data:{
+				items: [{ // 每一行的数据 里面  定义一个 控制背景颜色的 数据isRun
+						"isRun":false,
+						"name": "张三",
+						"age": 18,
+						"sex": 0
+					},
+					{
+						"isRun":false,
+						"name": "李四",
+						"age": 21,
+						"sex": 1
+					},
+				]
+			},
+			methods:{
+				getData:function(data){//接收数据的方法
+//					data是子级传递过来的数据
+					console.log(data)
+					this.items.push(data)
+				},
+				delPerson:function(index ){// 删除  表格中数据   index删除项的索引
+					this.items.splice(index,1)
+				},
+				overTr:function(index){ // 移入 单行
+					// 移入的那行的  isRun 为true
+					
+					this.items[index].isRun=true;
+				},
+				outTr:function(index){ // 移出 单行
+					// 移出的那行的  isRun 为false
+					this.items[index].isRun=false;
+				}
+			}
+		})
+		
+		new Vue({
+			el:"#app2",
+			data:{
+				items: [{ // 每一行的数据 里面  定义一个 控制背景颜色的 数据isRun
+						"isRun":false,
+						"name": "张三",
+						"age": 18,
+						"sex": 0
+					},
+					{
+						"isRun":false,
+						"name": "李四",
+						"age": 21,
+						"sex": 1
+					},
+				]
+			},
+			methods:{
+				getData:function(data){//接收数据的方法
+//					data是子级传递过来的数据
+					console.log(data)
+					this.items.push(data)
+				},
+				delPerson:function(index ){// 删除  表格中数据   index删除项的索引
+					this.items.splice(index,1)
+				},
+				overTr:function(index){ // 移入 单行
+					// 移入的那行的  isRun 为true
+					
+					this.items[index].isRun=true;
+				},
+				outTr:function(index){ // 移出 单行
+					// 移出的那行的  isRun 为false
+					this.items[index].isRun=false;
+				}
+			}
+		})
+	</script>
+</html>

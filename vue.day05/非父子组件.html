@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<a-com></a-com>
+			<b-com></b-com>
+		</div>
+	</body>
+	<script src="vue.js"></script>
+	<script type="text/javascript">
+		//组件a向组件B传递数据
+		//传递数据的组件：组件a   触发监听事件
+		//接收数据的组件：组件b  监听自定义事件
+		
+		//创建一个空的vue实例
+		var bus=new Vue();
+		
+		Vue.component("aCom",{
+			template:"<div>a组件：<input type='text' v-model='text'><button @click='chuanText'>传递给b</button></div>",
+			data:function(){
+				return{
+					text:"a组件中的数据"
+				}
+			},
+			methods:{//触发自定义事件
+				chuanText:function(){
+					//在空的vue实例上触发自定义事件
+					bus.$emit("myevent",this.text)
+				}
+			}
+		})
+		
+		//b组件
+		Vue.component("bCom",{
+			template:"<div>b组件:{{text}}</div>",
+			data:function(){
+				return{
+					text:""//保存传递过来的数据
+				}
+			},
+			methods:{
+			},
+			mounted:function(){//挂载之后监听自定义事件
+				//this指向问题   this指向的是bus
+				
+				//解决：1，保存this指向
+//				console.log(this)//指当前的组件bCom
+//				var _this=this//保存
+//				bus.$on("myevent",function(data){
+//					//data:传递过来的数据
+//					console.log("b组件中  接收到的数据")
+//					console.log(data)
+//					_this.text=data
+//				})
+
+				//解决方式2：es6提供的箭头函数()=>{}
+				//特点1.箭头函数中没有this
+				//	  2.如果在箭头函数中使用this，他会在外面去找
+				//   找到--》使用   找不到--》报错
+				console.log(this)
+				bus.$on("myevent",(data)=>{
+//					console.log(this===bus)//fasle
+//					console.log(this===_this)//ture  当前的this在外面
+					this.text=data
+					
+				})
+			}
+		})
+		
+		new Vue({
+			el:"#app"
+		})
+	</script>
+</html>
